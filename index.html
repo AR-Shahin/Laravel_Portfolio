@@ -33,6 +33,7 @@
     </head> 
     <body>
         <div class="wrapping" style="overflow: hidden">
+            <div class="scroll-top"><a href="#hero-section"><i class="fas fa-angle-double-up"></i></a></div><!-- scrolTop -->
             <!-- navbar -->
             <nav class="navbar navbar-expand-lg fixed-top " id="navbar">
                 <div class="container">
@@ -102,7 +103,8 @@
                                 </div>
                             </div>
                             <div class="col-12 col-sm-6 col-md-6">
-                                <img src="resources/images/hero.png" alt="" class="img-fluid wow animate__animated animate__zoomIn" data-wow-delay=".3s">
+                                <img src="resources/images/hero.png" alt="" class="img-fluid" style=" animation-name: HERO_ANIMATION;
+                                                                                                     animation-duration: 5s; animation-iteration-count: infinite;">
                             </div>
                         </div>
                     </div>
@@ -670,20 +672,21 @@
             </section>
             <!-- programming_section end -->
 
-            <section id="counter_section" style="background: #245CD1;color: #fff">
+            <section id="counter_section" style="background: #245CD1;color: #fff;">
                 <div class="container">
                     <div class="row text-center">
-                        <div class="col-12 col-md-3">
+                        <div class="col-12 col-md-3 mb-3">
                             <i class="far fa-smile-wink"></i>
                             <h3 class="count">155</h3>
                             <span>Happy Client</span>
                         </div>
-                        <div class="col-12 col-md-3">
+                    
+                        <div class="col-12 col-md-3 mb-3">
                             <i class="fas fa-briefcase"></i>
                             <h3 class="count">1355</h3>
                             <span>Total Projects Done</span>
                         </div>
-                        <div class="col-12 col-md-3">
+                        <div class="col-12 col-md-3 mb-3">
                             <i class="far fa-money-bill-alt"></i>
                             <h3 class="count">155</h3>
                             <span>Queue Projects</span>
@@ -764,47 +767,110 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </section>
+            
+            
+        <!-- Link section -->
+           <section id="link_section" style="width: 100%">
+               <div class="container">
+                   <div class="row">
+                       <div class="col-12 col-sm-6 col-md-3">
+                           <h4>Links</h4>
+                           <div class="links">
+                               <ul>
+                                   <li><a href=""><i class="fa fa-square"></i> Home</a></li>
+                                   <li><a href=""><i class="fa fa-square"></i> About</a></li>
+                                   <li><a href=""><i class="fa fa-square"></i> Codes</a></li>
+                                   <li><a href=""><i class="fa fa-square"></i> Portfolio</a></li>
+                               </ul>
+                           </div>
+                       </div>
+                       <div class="col-12 col-sm-6 col-md-3">
+                            <h4>Follow Me</h4>
+                           <div class="links">
+                               <ul>
+                                   <li><a href=""><i class="fa fa-square"></i> Facebook</a></li>
+                                   <li><a href=""><i class="fa fa-square"></i> Twitter</a></li>
+                                   <li><a href=""><i class="fa fa-square"></i> Github</a></li>
+                                   <li><a href=""><i class="fa fa-square"></i> Linkedin</a></li>
+                                   <li><a href=""><i class="fa fa-square"></i> Youtube</a></li>
+                               </ul>
+                           </div>
+                       </div>
+                       <div class="col-12 col-sm-6 col-md-3">
+                             <h4>Resources</h4>
+                           <div class="links">
+                               <ul>
+                                   <li><a href=""><i class="fa fa-square"></i> Blogs</a></li>
+                                   <li><a href=""><i class="fa fa-square"></i> Codes</a></li>
+                                   <li><a href=""><i class="fa fa-square"></i> Free Tools</a></li>
+                               </ul>
+                           </div>
+                       </div>
+                       <div class="col-12 col-sm-6 col-md-3">
+                             <h4>Hire Me</h4>
+                           <div class="links">
+                               <ul>
+                                   <li><a href=""><i class="fa fa-square"></i> Fiverr Profile</a></li>
+                                   <li><a href=""><i class="fa fa-square"></i> Upwork Profile</a></li>
+                               </ul>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </section>
+            
+            <!-- Footer -->
+            
+            <footer>
+                <div class="row text-center">
+                    <div class="col-12">
+                        <span>Design & Developed with <b>&hearts;</b> by <a href="">Shahin</a></span>
+                    </div>
+                </div>
+            </footer>
+ 
+        </div> <!-- wrapping -->
 
-                    <div class="scroll-top"><a href="#hero-section"><i class="fas fa-angle-double-up"></i></a></div><!-- scrolTop -->
-                </div> <!-- wrapping -->
+      
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <!-- Plugin JS -->
+        <script src="resources/js/wow.min.js"></script>
+        <script src="resources/js/plugin/particles.min.js"></script>
+        <script src="resources/js/plugin/app.js"></script>
+        <script src="resources/js/plugin/animated-headline.js"></script>
+        <script src="resources/js/plugin/owl.carousel.min.js"></script>
+        <script src="resources/js/plugin/wow.min.js"></script>
+        <script src="resources/js/plugin/jquery.magnific-popup.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-                <!-- Plugin JS -->
-                <script src="resources/js/wow.min.js"></script>
-                <script src="resources/js/plugin/particles.min.js"></script>
-                <script src="resources/js/plugin/app.js"></script>
-                <script src="resources/js/plugin/animated-headline.js"></script>
-                <script src="resources/js/plugin/owl.carousel.min.js"></script>
-                <script src="resources/js/plugin/wow.min.js"></script>
-                <script src="resources/js/plugin/jquery.magnific-popup.min.js"></script>
-                <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.js"></script>
 
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>
 
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>
+        <!-- End Plugin JS -->
+        <script src="resources/js/main.js"></script>
+        <script>
+            $('.scroll-top').click(function(){
+                $('html,body').animate({
+                    scrollTop : 0
+                }),100;
+            });
+            $('.scroll-top').hide();
+            $(window).scroll(function(){
+                var count = $(this).scrollTop();
 
-                <!-- End Plugin JS -->
-                <script src="resources/js/main.js"></script>
-                <script>
-                    $('.scroll-top').click(function(){
-                        $('html,body').animate({
-                            scrollTop : 0
-                        }),100;
-                    });
-                    $('.scroll-top').hide();
-                    $(window).scroll(function(){
-                        var count = $(this).scrollTop();
-
-                        if(count < 100){
-                            $('.scroll-top').fadeOut(100)
-                        }
-                        else{
-                            $('.scroll-top').fadeIn(100);
-                            ;
-                        }
-                    });
-                </script>
-                </body>
-            </html>
+                if(count < 100){
+                    $('.scroll-top').fadeOut(100)
+                }
+                else{
+                    $('.scroll-top').fadeIn(100);
+                    ;
+                }
+            });
+        </script>
+    </body>
+</html>

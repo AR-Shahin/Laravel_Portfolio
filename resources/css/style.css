@@ -39,10 +39,10 @@ h4{
 }
 
 .card{
-background: transparent;
+    background: transparent;
 }
 .card-body{
-background: transparent;
+    background: transparent;
 }
 .sec_title{
     padding-right: 15px;
@@ -166,7 +166,7 @@ background: transparent;
     display: inline-block;
 }
 #about_section ul li span{
-     background: #F8EFBA;
+    background: #F8EFBA;
     display: inline-block;
     padding: 5px;
     font-size: 14px;
@@ -199,11 +199,11 @@ background: transparent;
 #portfolio_section{
     background: rgba(214, 162, 232, 0.17);
 }
- #portfolio {
-  margin-top: 25px;
+#portfolio {
+    margin-top: 25px;
 }
 #portfolio_section .card{
-   box-shadow: 0 8px 6px -6px black;  
+    box-shadow: 0 8px 6px -6px black;  
     transition: .6s;
 }
 #portfolio_section .card:hover{
@@ -232,7 +232,7 @@ background: transparent;
 #contact .bg_content{
     padding: 0px;
     background: red;
-  position: absolute;
+    position: absolute;
     left: -10%;
     color: #fff; 
 }
@@ -249,7 +249,7 @@ background: transparent;
     padding: 0;
 }
 #contact .contact_media{
-   margin: 5px 0;
+    margin: 5px 0;
 }
 #contact .socal_links{
     margin-right: 100px;
@@ -285,11 +285,38 @@ background: transparent;
     font-size: 12px;
 }
 
-
-
-
-
-
+#link_section{
+    background: #293044;
+    color: #fff;
+    padding: 70px 0;
+}
+#link_section h4{
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+#link_section .links ul li i{
+    font-size: 10px;
+    color: #ccc;
+    margin-right: 5px;
+}
+#link_section .links ul li a{
+    color: #ccc;
+    font-size: 14px;
+}
+footer{
+    padding: 25px 0;
+    color: #ccc;
+    background: #0E1833;
+}
+footer span{
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-weight: 100;
+}
+footer span b{
+    color: #e74c3c;
+    font-size: 15px;
+}
 
 .scroll-top{
     height: 40px;
@@ -311,4 +338,22 @@ background: transparent;
 }
 .scroll-top:hover a{
     margin-top: -5px;
+}
+
+
+
+
+/*ANIMATIONS*/
+@keyframes HERO_ANIMATION {
+    0%   {transform: scale(1)}
+    10%  {transform: scale(.9)}
+    20%  {transform: scale(.8)}
+    30%  {transform: scale(.7)}
+    40%  {transform: scale(.8)}
+    50%  {transform: scale(.9)}
+    60%  {transform: scale(.95)}
+    70%  {transform: scale(.9)}
+    80%  {transform: scale(.8)}
+    90%  {transform: scale(.9)}
+    100% {transform: scale(.98)}
 }
