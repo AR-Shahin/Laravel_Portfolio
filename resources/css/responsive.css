@@ -1,7 +1,5 @@
 @media only screen and (max-width:480px){
-    #navbar{
-        background: 
-    }
+
     #hero-section .hero-content{
         padding: 80px 0 0px 0 !important;
     }
@@ -9,11 +7,51 @@
         margin-top: 10px;
     }
     #hero-section .tagline{
-        margin-left: -215px;
+        margin-left: -200px;
     }
     #abt_skill{
         margin-top: 10px;
     }
+    #about_section h2{
+        margin-top: 25px;
+    }
+    #counter_section .col-12{
+        border-bottom: 1px solid #fff;
+        padding: 10px 0;
+    }
+    #contact .bg{
+        padding: 0;
+        text-align: center;
+        height: 100%;
+    }
+    #contact .bg_content{
+        left: 0;
+        position: inherit;
+    }
+    #contact .contact_media{
+        border-bottom: 1px solid #fff;
+        padding: 10px 0;
+    }
+    #contact .socal_links{
+        margin: 0;
+        text-align: center;
+        margin-bottom: 25px;
+    }
+    #contact form{
+        margin-top: 15px;
+    }
+    #link_section{
+        text-align:;
+        padding: 25px 0;
+    }
+    #link_section .col-12{
+        padding: 10px 0;
+        border-bottom: 1px solid #fff;
+    }
+    #link_section .custom_textRight{
+        text-align: right;
+    }
+
     section{
         padding: 25px 0;
     }
@@ -30,8 +68,8 @@
         margin-top: 35px;
     }
     #about-section{
-    text-align: center;
-    padding-top: 40px;
+        text-align: center;
+        padding-top: 40px;
     }
     #about-section .about-btn-box .abt-btn{
         margin-right: 0;
@@ -83,19 +121,19 @@
     #about-section{
         text-align: center;
     }
-      #contact-section ul{
+    #contact-section ul{
         transform: rotate(0deg);
-         width: 90%;
-         margin: 0 auto;
+        width: 90%;
+        margin: 0 auto;
         margin-top: 35px;
     }
-      #contact-section ul li::before{
+    #contact-section ul li::before{
         display: none;
     }
     #contact-section ul li::after{
         display: none;
     }
-     #contact-section ul li{
+    #contact-section ul li{
         border: 1.5px solid rgba(245, 246, 250, 0.63);
     }
     .my-form{
@@ -103,5 +141,5 @@
     }
 }
 @media (min-width:576px) and (max-width:767px){
-    
+
 }
