@@ -4,12 +4,11 @@ use Illuminate\Support\Facades\Route;
 
 
 //Auth::routes();
+Route::prefix('admin')->group(base_path('routes/admin.php'));
 
 #Frontend Routes
 Route::get('/','HomeController@index')->name('home');
 Route::get('/projects', 'ProjectController@index')->name('projects.index');
 
-#Backend Routes
-Route::get('/ar_admin', 'Auth\LoginController@showLoginForm')->name('login');
-Route::get('/dashboard', 'Admin\AdminController@index')->name('dashboard');
+
 

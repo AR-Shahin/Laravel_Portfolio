@@ -107,7 +107,28 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="img_box text-center">
-                                <a href="http://localhost/Laravel/Laravel_Portfolio/public/frontend/resources/images/portfolio/a2z.png" class="popup"><img src="../public/frontend/resources/images/portfolio/port1.jpg" alt="" class="img-fluid"></a>
+                                <a href="http://localhost/Laravel/Laravel_Portfolio/public/frontend/resources/images/portfolio/port1.png" class="popup"><img src="../public/frontend/resources/images/portfolio/port2.jpg" alt="" class="img-fluid"></a>
+                                <div class="img-content">
+                                    <h6 class="mt-3"><i style="color: #6D214F;font-size: 14px">Wordpress Customizing</i></h6>
+                                    <h5>E-commerce Website</h5>
+
+                                    <ul>
+                                        <a href=""><li class="youtube"><i class="fa fa-youtube"></i></li></a>
+                                        <a href=""><li class="git"><i class="fa fa-github"></i></li></a>
+                                        <a href=""><li class="eye"><i class="fa fa-eye"></i></li></a>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3 mb-3">
+                <div class="project_box">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="img_box text-center">
+                                <a href="http://localhost/Laravel/Laravel_Portfolio/public/frontend/resources/images/portfolio/a2z.png" class="popup"><img src="../public/frontend/resources/images/portfolio/port3.jpg" alt="" class="img-fluid"></a>
                                 <div class="img-content">
                                     <h6 class="mt-3"><i style="color: #6D214F;font-size: 14px">Wordpress Customizing</i></h6>
                                     <h5>E-commerce Website</h5>
@@ -149,7 +170,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="img_box text-center">
-                                <a href="http://localhost/Laravel/Laravel_Portfolio/public/frontend/resources/images/portfolio/a2z.png" class="popup"><img src="../public/frontend/resources/images/portfolio/port1.jpg" alt="" class="img-fluid"></a>
+                                <a href="http://localhost/Laravel/Laravel_Portfolio/public/frontend/resources/images/portfolio/a2z.png" class="popup"><img src="../public/frontend/resources/images/portfolio/port5.jpg" alt="" class="img-fluid"></a>
                                 <div class="img-content">
                                     <h6 class="mt-3"><i style="color: #6D214F;font-size: 14px">Wordpress Customizing</i></h6>
                                     <h5>E-commerce Website</h5>
@@ -191,7 +212,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="img_box text-center">
-                                <a href="http://localhost/Laravel/Laravel_Portfolio/public/frontend/resources/images/portfolio/a2z.png" class="popup"><img src="../public/frontend/resources/images/portfolio/port1.jpg" alt="" class="img-fluid"></a>
+                                <a href="http://localhost/Laravel/Laravel_Portfolio/public/frontend/resources/images/portfolio/a2z.png" class="popup"><img src="../public/frontend/resources/images/portfolio/port2.jpg" alt="" class="img-fluid"></a>
                                 <div class="img-content">
                                     <h6 class="mt-3"><i style="color: #6D214F;font-size: 14px">Wordpress Customizing</i></h6>
                                     <h5>E-commerce Website</h5>
@@ -233,7 +254,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="img_box text-center">
-                                <a href="http://localhost/Laravel/Laravel_Portfolio/public/frontend/resources/images/portfolio/a2z.png" class="popup"><img src="../public/frontend/resources/images/portfolio/port1.jpg" alt="" class="img-fluid"></a>
+                                <a href="http://localhost/Laravel/Laravel_Portfolio/public/frontend/resources/images/portfolio/a2z.png" class="popup"><img src="../public/frontend/resources/images/portfolio/port3.jpg" alt="" class="img-fluid"></a>
                                 <div class="img-content">
                                     <h6 class="mt-3"><i style="color: #6D214F;font-size: 14px">Wordpress Customizing</i></h6>
                                     <h5>E-commerce Website</h5>
@@ -275,7 +296,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="img_box text-center">
-                                <a href="http://localhost/Laravel/Laravel_Portfolio/public/frontend/resources/images/portfolio/a2z.png" class="popup"><img src="../public/frontend/resources/images/portfolio/port1.jpg" alt="" class="img-fluid"></a>
+                                <a href="http://localhost/Laravel/Laravel_Portfolio/public/frontend/resources/images/portfolio/a2z.png" class="popup"><img src="../public/frontend/resources/images/portfolio/port5.jpg" alt="" class="img-fluid"></a>
                                 <div class="img-content">
                                     <h6 class="mt-3"><i style="color: #6D214F;font-size: 14px">Wordpress Customizing</i></h6>
                                     <h5>E-commerce Website</h5>
@@ -296,28 +317,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="img_box text-center">
-                                <a href="http://localhost/Laravel/Laravel_Portfolio/public/frontend/resources/images/portfolio/a2z.png" class="popup"><img src="../public/frontend/resources/images/portfolio/port1.jpg" alt="" class="img-fluid"></a>
-                                <div class="img-content">
-                                    <h6 class="mt-3"><i style="color: #6D214F;font-size: 14px">Wordpress Customizing</i></h6>
-                                    <h5>E-commerce Website</h5>
-
-                                    <ul>
-                                        <a href=""><li class="youtube"><i class="fa fa-youtube"></i></li></a>
-                                        <a href=""><li class="git"><i class="fa fa-github"></i></li></a>
-                                        <a href=""><li class="eye"><i class="fa fa-eye"></i></li></a>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-3 mb-3">
-                <div class="project_box">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="img_box text-center">
-                                <a href="http://localhost/Laravel/Laravel_Portfolio/public/frontend/resources/images/portfolio/a2z.png" class="popup"><img src="../public/frontend/resources/images/portfolio/port1.jpg" alt="" class="img-fluid"></a>
+                                <a href="http://localhost/Laravel/Laravel_Portfolio/public/frontend/resources/images/portfolio/a2z.png" class="popup"><img src="../public/frontend/resources/images/portfolio/port7.jpg" alt="" class="img-fluid"></a>
                                 <div class="img-content">
                                     <h6 class="mt-3"><i style="color: #6D214F;font-size: 14px">Wordpress Customizing</i></h6>
                                     <h5>E-commerce Website</h5>

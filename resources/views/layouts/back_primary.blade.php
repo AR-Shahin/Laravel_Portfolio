@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title> @yield('title')| Admin</title>
+    <title> @yield('title') | Admin</title>
 
     @yield('css')
 
