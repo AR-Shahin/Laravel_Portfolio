@@ -40,7 +40,10 @@ $(document).ready(function(){
             enabled: true
         }
     });
-    
+
     //counter
-     $(".count").counterUp({delay:10,time:1000});
+    $(".count").counterUp({delay:10,time:1000});
+
+
+
 });

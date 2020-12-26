@@ -52,7 +52,6 @@
     #link_section .custom_textRight{
         text-align: right;
     }
-
     section{
         padding: 25px 0;
     }
@@ -61,9 +60,14 @@
     }
     h4{
         font-size: 20px;
-    } 
+    }
+    #projects .btn-group{
+        display: inline;
+    }
+    #projects .btn-group a{
+        margin-bottom:5px;
+    }
 }
-
 @media (min-width:380px) and (max-width:575px){
     
     #hero-section .hero-content{
@@ -120,6 +124,9 @@
     }
     section{
         padding: 35px 0;
+    }
+    #projects .btn-group{
+        display: inline;
     }
 }
 @media (min-width:576px) and (max-width:767px){
