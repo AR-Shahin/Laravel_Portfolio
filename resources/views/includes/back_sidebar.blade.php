@@ -31,11 +31,11 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#sliders" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
-            <span>Slider</span>
+            <span>Project</span>
         </a>
         <div id="sliders" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="">Slider</a>
+                <a class="collapse-item" href="{{route('category.index')}}">Category</a>
             </div>
         </div>
     </li>

@@ -11,4 +11,3 @@ Route::get('/','HomeController@index')->name('home');
 Route::get('/projects', 'ProjectController@index')->name('projects.index');
 
 
-
