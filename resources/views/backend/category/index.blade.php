@@ -46,7 +46,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="modal-id">
+    <div class="modal fade" id="editModal">
         <div class="modal-dialog">
             <div class="modal-content">
 
@@ -57,9 +57,9 @@
 
                 <div class="modal-body">
                     <form id="catUpdateForm" >
-                        <input type="hidden" id="cat_id" name="company_id" value="">
+                        <input type="hidden" id="cat_id" name="id" value="">
                         <div class="form-group">
-                            <input type="text" id="name" name="name" value="" class="form-control">
+                            <input type="text" id="edit_cat_name" name="name" value="" class="form-control">
                         </div>
                         <div class="form-group">
                             <button class="form-control btn btn-block btn-info">Update</button>
@@ -81,6 +81,7 @@
                 data: { },
                 success: function (response) {
                     table_data_row(response.data);
+                    $('#dataTable').dataTable();
                 }
             });
         };
@@ -125,19 +126,114 @@
                 method : 'POST',
                 data : {name : catName},
                 success : function (response) {
-                   if(response.flag == 'EXIST'){
-                       $('#add_cat_name').addClass('border-danger');
-                       setSwalAlert('info','Sorry!',response.message);
-                   }else if(response.flag == 'INSERT'){
-                       setSwalAlert('success','Success!',response.message);
-                       getAllCategory();
-                       $('#add_cat_name').removeClass('border-danger');
-                       $('#add_cat_name').val('');
-                   }
+                    if(response.flag == 'EXIST'){
+                        $('#add_cat_name').addClass('border-danger');
+                        setSwalAlert('info','Sorry!',response.message);
+                    }else if(response.flag == 'INSERT'){
+                        setSwalAlert('success','Success!',response.message);
+                        getAllCategory();
+                        $('#add_cat_name').removeClass('border-danger');
+                        $('#add_cat_name').val('');
+                    }
                 }
 
             })
         });
+
+        //edit
+        $('body').on('click','#editRow',function () {
+            var id = $(this).attr('data-id');
+            $.ajax({
+                url : <?= json_encode(route('category.edit'))?>,
+                type : 'GET',
+                data : {id : id},
+                success : function (response) {
+                    $('#edit_cat_name').val(response.data.name);
+                    $('#cat_id').val(response.data.id);
+                }
+            })
+        });
+
+        //update
+        $('#catUpdateForm').on('submit',function (e) {
+            e.preventDefault();
+            var name = $('#edit_cat_name').val();
+            var id = $("#cat_id").val();
+
+            if(name == ''){
+                $('#edit_cat_name').addClass('border-danger');
+                setNotifyAlert('Field Must not be empty','error');
+                return;
+            }
+            $.ajax({
+                url : <?= json_encode(route('category.update'))?>,
+                method:'PUT',
+                data: {name : name,id : id },
+                success:function (response) {
+                    if(response.flag == 'EXIST'){
+                        setSwalAlert('error','Sorry!',response.message);
+                        $('#edit_cat_name').addClass('border-danger');
+                    }else if(response.flag == 'UPDATE'){
+                        setSwalAlert('success','Good job!',response.message);
+                        $('#editModal').modal('toggle');
+                        getAllCategory();
+                        $('#edit_cat_name').removeClass('border-danger');
+                    }
+                }
+            });
+        });
+
+        //Delete Unit
+        $('body').on('click','#deleteRow',function (e) {
+            e.preventDefault();
+            var id = $(this).attr('data-id');
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success mx-2',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+            })
+
+            swalWithBootstrapButtons.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, cancel!',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                $.ajax({
+                    url : <?= json_encode(route('category.destroy'))?>,
+                    type : 'DELETE',
+                    data : {id : id},
+                    success : function (response) {
+                        getAllCategory();
+                        swalWithBootstrapButtons.fire(
+                            'Deleted!',
+                            'Your data has been deleted.',
+                            'success'
+                        )
+                    },
+                    error : function (e) {
+                        console.log(e);
+                    }
+                })
+
+            } else if (
+                    /* Read more about handling dismissals below */
+            result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire(
+                    'Cancelled',
+                    'Your file is safe :)',
+                    'error'
+                )
+            }
+        })
+        })
 
     </script>
 @stop

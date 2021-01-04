@@ -55,41 +55,27 @@ class CategoryController extends Controller
                 }
             }
         }
-
-
-
-    }
-
-    public function makeActive(Request $request){
-        $cat = Category::find($request->id)->update([
-            'status' => 1
-        ]);
-        return response()->json('SUCCESS');
-    }
-
-    public function makeInactive(Request $request){
-        $cat = Category::find($request->id)->update([
-            'status' => 0
-        ]);
-        return response()->json('SUCCESS');
     }
 
     public function edit(Request $request){
-        $cat = Category::find($request->id);
-        return response()->json($cat);
+        return response()->json([
+            'data' => Category::select('name','id')->find($request->input('id'))
+        ]);
     }
 
     public function update(Request $request){
         $cat = Category::where('name',$request->name)->first();
         if($cat){
             return response()->json([
-                'message' => 'EXIST'
+                'flag' => 'EXIST',
+                'message' => 'Data Already Exists!'
             ]);
         }else{
-            $cat = Category::find($request->id);
-            $cat->name = ucwords($request->name);
-            $cat->slug = Str::slug($request->name,'-');
-            if($cat->save()){
+            $update = Category::find($request->id)->update([
+                'name' => $request->input('name'),
+                'slug' => Str::slug($request->name,'-')
+            ]);
+            if($update){
                 return response()->json([
                     'message' => 'Data Updated successfully!',
                     'flag' => 'UPDATE',

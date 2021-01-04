@@ -13,9 +13,6 @@ Route::name('category.')->namespace('Admin')->prefix('category')->group(function
     Route::get('get-category','CategoryController@getAllCategory')->name('fetch');
     Route::delete('/delete', 'CategoryController@destroy')->name('destroy');
     Route::post('/store', 'CategoryController@store')->name('store');
-    Route::put('/status-active', 'CategoryController@makeActive')->name('status.active');
-    Route::put('/status-inactive', 'CategoryController@makeInactive')->name('status.inactive');
-
     Route::get('/edit', 'CategoryController@edit')->name('edit');
     Route::put('/update', 'CategoryController@update')->name('update');
 });
