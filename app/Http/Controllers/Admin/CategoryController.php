@@ -5,11 +5,10 @@ namespace App\Http\Controllers\Admin;
 use function abort;
 use App\Category;
 use App\Http\Controllers\Controller;
-use function dd;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use function json_decode;
 use function response;
-use function ucwords;
 use function view;
 use Illuminate\Support\Str;
 
@@ -20,11 +19,9 @@ class CategoryController extends Controller
     }
 
     public function getAllCategory(Request $request){
-        return  $cats = Category::latest()->get();
-        return response($cats);
-        return Request::ajax() ?
-            response()->json($cats,Response::HTTP_OK)
-            : abort(404);
+        return response([
+            'data' => Category::latest()->get()
+        ]);
     }
 
     public function destroy(Request $request)
@@ -38,22 +35,28 @@ class CategoryController extends Controller
     }
 
     public function store(Request $request){
-        $cat = Category::where('name',$request->name)->first();
-        if($cat){
-            return response()->json([
-                'message' => 'EXIST'
-            ]);
-        }else{
-            $cat = new Category();
-            $cat->name = ucwords($request->name);
-            $cat->slug = Str::slug($request->name,'-');
-            if($cat->save()){
+        if($request->has('name')){
+            $cat = Category::where('name',$request->input('name'))->first();
+            if($cat){
                 return response()->json([
-                    'message' => 'Data deleted successfully!',
-                    'flag' => 'INSERT',
+                    'flag' => 'EXIST',
+                    'message' => 'Data already exits!'
                 ]);
+            }else{
+                $create = Category::create([
+                    'name' => $request->input('name'),
+                    'slug' => Str::slug($request->input('name'),'-')
+                ]);
+                if($create){
+                    return response()->json([
+                        'flag' => 'INSERT',
+                        'message' => 'Data save successfully!'
+                    ]);
+                }
             }
         }
+
+
 
     }
 

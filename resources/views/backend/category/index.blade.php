@@ -11,9 +11,6 @@
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
-                            @php
-                                $i=1;
-                            @endphp
                             <tr>
                                 <th>SL</th>
                                 <th>Title</th>
@@ -22,18 +19,6 @@
                             </tr>
                             </thead>
                             <tbody id="catTable">
-                            <tr>
-                                <td>1</td>
-                                <td>Php</td>
-                                <td class="text-center">
-                                    <span class="badge badge-success">Active</span>
-
-                                </td>
-                                <td class="text-center">
-                                    <a href="" class="btn btn-sm btn-info">Edit</a>
-                                    <a href="" class="btn btn-sm btn-danger">Delete</a>
-                                </td>
-                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -46,11 +31,10 @@
                     <h4 class="text-info">Add Category</h4>
                 </div>
                 <div class="card-body">
-                    <form action="" method="post" id="catForm">
-                        @csrf
+                    <form id="catAddForm">
                         <label for="">Title</label>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="name" placeholder="Category Name" id="cat_name">
+                            <input type="text" class="form-control" name="name" placeholder="Category Name" id="add_cat_name">
                             <span class="text-danger">{{($errors->has('name')) ? ($errors->first('name')) : ' '}}</span>
                             <div id="response"></div>
                         </div>
@@ -62,8 +46,6 @@
             </div>
         </div>
     </div>
-
-
     <div class="modal fade" id="modal-id">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -90,6 +72,73 @@
     </div>
 
     <script type="text/javascript">
+        //fetch
+        getAllCategory();
+        function getAllCategory () {
+            $.ajax({
+                url: <?= json_encode(route('category.fetch'))?>,
+                type:'GET',
+                data: { },
+                success: function (response) {
+                    table_data_row(response.data);
+                }
+            });
+        };
+        function table_data_row(data) {
+            var	rows = '';
+            var i = 0;
+            $.each( data, function( key, value ) {
+
+                rows = rows + '<tr>';
+                rows = rows + '<td>'+ ++i +'</td>';
+                rows = rows + '<td>'+value.name+'</td>';
+                rows = rows + '<td class="text-center">';
+                if(value.status == 0){
+                    rows = rows + ' <button class="badge badge-danger" data-id="'+value.id+'" id="makeActive">Inactive</button>';
+                }else{
+                    rows = rows + ' <button class="badge badge-success" data-id="'+value.id+'" id="makeInactive">Active</button>';
+                }
+                rows+= '</td>';
+                rows = rows + '<td data-id="'+value.id+'" class="text-center">';
+                rows = rows + '<a class="btn btn-sm btn-info text-light" id="editRow" data-id="'+value.id+'" data-toggle="modal" data-target="#editModal">Edit</a> ';
+                rows = rows + '<a class="btn btn-sm btn-danger text-light"  id="deleteRow" data-id="'+value.id+'" >Delete</a> ';
+                rows = rows + '</td>';
+                rows = rows + '</tr>';
+            });
+            $("#catTable").html(rows);
+            $('#dataTable').dataTable();
+        }
+        //Store
+        $('#catAddForm').on('submit',function (e) {
+            e.preventDefault();
+            var catName = $('#add_cat_name').val();
+            if(catName == ''){
+                $('#add_cat_name').addClass('border-danger');
+                setNotifyAlert('Category field is required!','error');
+                return;
+            }else{
+                $('#add_cat_name').removeClass('border-danger');
+            }
+
+            $.ajax({
+                url : <?= json_encode(route('category.store'))?>,
+                method : 'POST',
+                data : {name : catName},
+                success : function (response) {
+                   if(response.flag == 'EXIST'){
+                       $('#add_cat_name').addClass('border-danger');
+                       setSwalAlert('info','Sorry!',response.message);
+                   }else if(response.flag == 'INSERT'){
+                       setSwalAlert('success','Success!',response.message);
+                       getAllCategory();
+                       $('#add_cat_name').removeClass('border-danger');
+                       $('#add_cat_name').val('');
+                   }
+                }
+
+            })
+        });
+
     </script>
 @stop
 
