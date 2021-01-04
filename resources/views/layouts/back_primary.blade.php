@@ -38,10 +38,7 @@
 
 <!-- Page level custom scripts -->
 <script src="{{asset('backend')}}/js/demo/datatables-demo.js"></script>
-
-<script type="text/javascript">
-    var base_url =  '/admin';
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="{{asset('asset/ajax.js')}}"></script>
 </body>

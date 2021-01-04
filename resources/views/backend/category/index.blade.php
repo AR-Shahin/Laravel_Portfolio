@@ -5,10 +5,6 @@
         <div class="col-12 col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <script>
-                        var root_url = <?php echo json_encode(route('get.category')) ?>;
-                        {{--var cat_dlt_url = <?php echo json_encode(route('category.destroy')) ?>;--}}
-                    </script>
                     <h4 class="text-info">Category</h4>
                 </div>
                 <div class="card-body">

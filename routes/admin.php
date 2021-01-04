@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Route;
 #Backend Routes
 Route::get('/ar_admin', 'Auth\LoginController@showLoginForm')->name('login');
 
@@ -7,12 +7,16 @@ Route::get('/ar_admin', 'Auth\LoginController@showLoginForm')->name('login');
 Route::get('/dashboard', 'Admin\AdminController@index')->name('dashboard');
 
 #Category Routes
-Route::get('category/index','Admin\CategoryController@index')->name('category.index');
-Route::get('get-category','Admin\CategoryController@getAllCategory')->name('get.category');
-Route::delete('category/delete', 'Admin\CategoryController@destroy')->name('category.destroy');
-Route::post('/category/store', 'Admin\CategoryController@store')->name('category.store');
-Route::get('/category/status-active', 'Admin\CategoryController@makeActive')->name('category.status.active');
-Route::get('/category/status-inactive', 'Admin\CategoryController@makeInactive')->name('category.status.inactive');
+Route::name('category.')->prefix('category')->group(function(){
 
-Route::get('/category/edit', 'Admin\CategoryController@edit')->name('category.edit');
-Route::post('/category/update', 'Admin\CategoryController@update')->name('category.update');
+    Route::get('/index','Admin\CategoryController@index')->name('index');
+    Route::get('get-category','Admin\CategoryController@getAllCategory')->name('fetch');
+    Route::delete('/delete', 'Admin\CategoryController@destroy')->name('destroy');
+    Route::post('/store', 'Admin\CategoryController@store')->name('store');
+    Route::get('/status-active', 'Admin\CategoryController@makeActive')->name('status.active');
+    Route::get('/status-inactive', 'Admin\CategoryController@makeInactive')->name('status.inactive');
+
+    Route::get('/edit', 'Admin\CategoryController@edit')->name('edit');
+    Route::post('/update', 'Admin\CategoryController@update')->name('update');
+});
+
