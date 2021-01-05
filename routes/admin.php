@@ -24,3 +24,10 @@ Route::name('category.')->namespace('Admin')->prefix('category')->group(function
     Route::put('/update', 'CategoryController@update')->name('update');
 });
 
+#Site Identity Routes
+Route::name('site-identity.')->namespace('Admin')->prefix('site')->group(function(){
+    Route::get('/index','SiteIdentityController@index')->name('index');
+    Route::get('get-site-identity','SiteIdentityController@fetchSiteIdentity')->name('fetch');
+    Route::post('/store', 'SiteIdentityController@store')->name('store');
+    Route::put('/update', 'AboutTextController@update')->name('update');
+});
