@@ -22,17 +22,42 @@ class SiteIdentityController extends Controller
     }
 
     public function store(Request $request){
-       // return $request->all();
         if($request->has('logo')){
-           return $image = $request->file('logo');
+            $image = $request->file('logo');
             $ext = $image->extension();
             if(strtolower($ext) != 'png'){
                 return response()->json([
                     'flag' =>'EXT_NOT_MATCH',
-                    'message' => 'Extension Should be jpg,png,jpeg!'
+                    'message' => 'Extension Should be PNG!'
                 ]);
+            }else{
+                $name =  hexdec(uniqid()) . '.' .$ext;
+                $path = 'uploads/site/';
+                $last_image = $path.$name;
+                $create = new SiteIdentity();
+                $create->logo = $last_image;
+                $create->phone = $request->input('phone');
+                $create->email = $request->input('email');
+                $create->address = $request->input('address');
+                $create->resume = $request->input('resume');
+                if($create->save()){
+                    $image->move($path,$last_image);
+                    return response()->json([
+                        'flag' =>'INSERT',
+                        'message' => 'Data save Successfully!',
+                        'data' => $create->id
+                    ]);
+                }
             }
         }
         return 0;
+    }
+
+    public function update(Request $request){
+        if($request->input('logo')){
+            return $request->file('logo');
+        }else{
+            return 2;
+        }
     }
 }

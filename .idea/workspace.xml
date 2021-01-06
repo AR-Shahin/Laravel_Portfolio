@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b98b518f-a098-455d-9091-3b206b820680" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/includes/back_sidebar.blade.php" afterPath="$PROJECT_DIR$/resources/views/includes/back_sidebar.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SiteIdentityController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SiteIdentityController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/backend/site/site_identity.blade.php" afterPath="$PROJECT_DIR$/resources/views/backend/site/site_identity.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/admin.php" afterPath="$PROJECT_DIR$/routes/admin.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,39 +15,35 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.5">
+    <splitter split-orientation="vertical" split-proportion="0.58280253">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
           <file leaf-file-name="admin.php" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/routes/admin.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="193">
-                  <caret line="49" column="55" lean-forward="false" selection-start-line="49" selection-start-column="49" selection-end-line="49" selection-end-column="55" />
+                <state relative-caret-position="63">
+                  <caret line="27" column="13" lean-forward="false" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="27" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ProgrammingController.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/ProgrammingController.php">
+          <file leaf-file-name="SiteIdentityController.php" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/SiteIdentityController.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="399">
-                  <caret line="56" column="5" lean-forward="true" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
+                <state relative-caret-position="168">
+                  <caret line="57" column="39" lean-forward="false" selection-start-line="57" selection-start-column="39" selection-end-line="57" selection-end-column="39" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/resources/views/backend/programming/index.blade.php">
+          <file leaf-file-name="site_identity.blade.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/resources/views/backend/site/site_identity.blade.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="151">
-                  <caret line="277" column="54" lean-forward="false" selection-start-line="277" selection-start-column="48" selection-end-line="277" selection-end-column="54" />
-                  <folding>
-                    <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                    <element signature="e#9090#9097#1#HTML" expanded="true" />
-                    <element signature="e#10780#10787#1#HTML" expanded="true" />
-                  </folding>
+                <state relative-caret-position="84">
+                  <caret line="72" column="117" lean-forward="false" selection-start-line="72" selection-start-column="117" selection-end-line="72" selection-end-column="117" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -56,12 +52,23 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/resources/views/backend/programming/index.blade.php">
+          <file leaf-file-name="site_identity.blade.php" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/resources/views/backend/site/site_identity.blade.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="68">
-                  <caret line="195" column="31" lean-forward="false" selection-start-line="195" selection-start-column="31" selection-end-line="195" selection-end-column="31" />
-                  <folding />
+                <state relative-caret-position="140">
+                  <caret line="221" column="28" lean-forward="true" selection-start-line="221" selection-start-column="28" selection-end-line="221" selection-end-column="28" />
+                  <folding>
+                    <marker date="1609945894124" expanded="true" signature="7751:7905" ph="..." />
+                    <marker date="1609945894124" expanded="true" signature="7911:7984" ph="..." />
+                    <marker date="1609945894124" expanded="true" signature="8014:8172" ph="..." />
+                    <marker date="1609945894124" expanded="true" signature="8178:8255" ph="..." />
+                    <marker date="1609945894124" expanded="true" signature="8285:8443" ph="..." />
+                    <marker date="1609945894124" expanded="true" signature="8449:8526" ph="..." />
+                    <marker date="1609945894124" expanded="true" signature="8558:8718" ph="..." />
+                    <marker date="1609945894124" expanded="true" signature="8724:8803" ph="..." />
+                    <marker date="1609945894124" expanded="true" signature="8834:8993" ph="..." />
+                    <marker date="1609945894124" expanded="true" signature="8999:9077" ph="..." />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -118,8 +125,6 @@
         <option value="$PROJECT_DIR$/database/migrations/2021_01_04_135936_create_about_texts_table.php" />
         <option value="$PROJECT_DIR$/app/AboutText.php" />
         <option value="$PROJECT_DIR$/database/migrations/2021_01_05_141724_create_site_identities_table.php" />
-        <option value="$PROJECT_DIR$/resources/views/backend/site/site_identity.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/SiteIdentityController.php" />
         <option value="$PROJECT_DIR$/database/migrations/2021_01_06_022648_create_social_links_table.php" />
         <option value="$PROJECT_DIR$/app/SocialLink.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/AboutTextController.php" />
@@ -130,9 +135,11 @@
         <option value="$PROJECT_DIR$/database/migrations/2021_01_06_073620_create_programmings_table.php" />
         <option value="$PROJECT_DIR$/app/Programming.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php" />
-        <option value="$PROJECT_DIR$/routes/admin.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/ProgrammingController.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/programming/index.blade.php" />
+        <option value="$PROJECT_DIR$/routes/admin.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/site/site_identity.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/SiteIdentityController.php" />
       </list>
     </option>
   </component>
@@ -257,7 +264,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="category" />
+              <option name="myItemId" value="site" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -474,18 +481,18 @@
       <workItem from="1609762321176" duration="12054000" />
       <workItem from="1609822493912" duration="50000" />
       <workItem from="1609853987728" duration="7922000" />
-      <workItem from="1609899627439" duration="15078000" />
+      <workItem from="1609899627439" duration="21651000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75699000" />
+    <option name="totallyTimeSpent" value="82272000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18009119" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -772,31 +779,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/SiteIdentityController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="26" column="17" lean-forward="false" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
-          <folding>
-            <element signature="e#46#82#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2021_01_06_022648_create_social_links_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="441">
           <caret line="23" column="33" lean-forward="true" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/site/site_identity.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="3" lean-forward="false" selection-start-line="3" selection-start-column="3" selection-end-line="74" selection-end-column="10" />
-          <folding>
-            <element signature="e#95#3759#0#HTML" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -880,26 +867,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/admin.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/programming/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="49" column="55" lean-forward="false" selection-start-line="49" selection-start-column="49" selection-end-line="49" selection-end-column="55" />
-          <folding />
+        <state relative-caret-position="214">
+          <caret line="277" column="54" lean-forward="false" selection-start-line="277" selection-start-column="48" selection-end-line="277" selection-end-column="54" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="e#9090#9097#1#HTML" expanded="false" />
+            <element signature="e#10780#10787#1#HTML" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/ProgrammingController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
+        <state relative-caret-position="403">
           <caret line="56" column="5" lean-forward="true" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/programming/index.blade.php">
+    <entry file="file://$PROJECT_DIR$/routes/admin.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="195" column="31" lean-forward="false" selection-start-line="195" selection-start-column="31" selection-end-line="195" selection-end-column="31" />
+        <state relative-caret-position="63">
+          <caret line="27" column="13" lean-forward="false" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/site/site_identity.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="72" column="117" lean-forward="false" selection-start-line="72" selection-start-column="117" selection-end-line="72" selection-end-column="117" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/SiteIdentityController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="57" column="39" lean-forward="false" selection-start-line="57" selection-start-column="39" selection-end-line="57" selection-end-column="39" />
           <folding />
         </state>
       </provider>
