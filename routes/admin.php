@@ -39,3 +39,13 @@ Route::name('social-link.')->namespace('Admin')->prefix('link')->group(function(
     Route::post('/store', 'SocialLinksController@store')->name('store');
     Route::put('/update', 'SocialLinksController@update')->name('update');
 });
+
+#Programming Routes
+Route::name('programming.')->namespace('Admin')->prefix('programming')->group(function(){
+    Route::get('/index','ProgrammingController@index')->name('index');
+    Route::get('get-programming','ProgrammingController@getAllProgrammingCode')->name('fetch');
+    Route::delete('/delete', 'ProgrammingController@destroy')->name('destroy');
+    Route::post('/store', 'ProgrammingController@store')->name('store');
+    Route::get('/edit', 'ProgrammingController@edit')->name('edit');
+    Route::put('/update', 'ProgrammingController@update')->name('update');
+});

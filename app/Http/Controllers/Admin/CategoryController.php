@@ -18,7 +18,7 @@ class CategoryController extends Controller
         return view('backend.category.index',$this->data);
     }
 
-    public function getAllCategory(Request $request){
+    public function getAllCategory(){
         return response([
             'data' => Category::latest()->get()
         ]);
