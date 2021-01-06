@@ -32,15 +32,16 @@ class AboutTextController extends Controller
                 'flag' => 'WARNING'
             ]);
         }
-        $create = AboutText::create([
-            'top_text' => $request->input('top_text'),
-            'bottom_text' => $request->input('bottom_text'),
-        ]);
-        if($create){
+        $create = new AboutText();
+        $create->top_text = $request->input('top_text');
+        $create->bottom_text = $request->input('bottom_text');
+
+        if($create->save()){
             return response()->json([
                 'status' => 200,
                 'message' => 'Data Save Successfully!',
-                'flag' => 'INSERT'
+                'flag' => 'INSERT',
+                'data' =>$create->id
             ]);
         }
     }

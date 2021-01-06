@@ -31,3 +31,11 @@ Route::name('site-identity.')->namespace('Admin')->prefix('site')->group(functio
     Route::post('/store', 'SiteIdentityController@store')->name('store');
     Route::put('/update', 'AboutTextController@update')->name('update');
 });
+
+#Social Link Routes
+Route::name('social-link.')->namespace('Admin')->prefix('link')->group(function(){
+    Route::get('/index','SocialLinksController@index')->name('index');
+    Route::get('get-site-identity','SocialLinksController@fetchSocialLinks')->name('fetch');
+    Route::post('/store', 'SocialLinksController@store')->name('store');
+    Route::put('/update', 'SocialLinksController@update')->name('update');
+});

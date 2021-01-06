@@ -109,7 +109,7 @@
                 method:'POST',
                 data: {top_text : topTxt,bottom_text : bottomTxt },
                 success:function (response) {
-                    console.log(response.status);
+                    console.log(response.data);
                     if(response.flag =='WARNING'){
                         setSwalAlert('info','Warning!',response.message);
                     }
@@ -120,6 +120,7 @@
                         getAboutText();
                         $('#updateTextButton').show();
                         $('#addTextButton').hide();
+                        $('#id').val(response.data);
                         $('#abtHeading').text('Edit About Text');
                     }
                 }
