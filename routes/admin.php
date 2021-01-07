@@ -19,7 +19,11 @@ Route::name('about-slider.')->namespace('Admin')->prefix('about-slider')->group(
     Route::get('/index','AboutSliderController@index')->name('index');
     Route::get('get-slider','AboutSliderController@fetchAboutSlider')->name('fetch');
     Route::post('/store', 'AboutSliderController@store')->name('store');
-    Route::put('/update', 'AboutTextController@update')->name('update');
+    Route::put('/status-active', 'AboutSliderController@statusActive')->name('status.active');
+    Route::put('/status-inactive', 'AboutSliderController@statusInActive')->name('status.inactive');
+    Route::delete('/delete', 'AboutSliderController@destroy')->name('destroy');
+    Route::get('/edit', 'AboutSliderController@edit')->name('edit');
+    Route::put('/update', 'AboutSliderController@update')->name('update');
 });
 
 #Category Routes
@@ -56,4 +60,17 @@ Route::name('programming.')->namespace('Admin')->prefix('programming')->group(fu
     Route::post('/store', 'ProgrammingController@store')->name('store');
     Route::get('/edit', 'ProgrammingController@edit')->name('edit');
     Route::put('/update', 'ProgrammingController@update')->name('update');
+});
+
+
+#Gallery Routes
+Route::name('gallery.')->namespace('Admin')->prefix('gallery')->group(function(){
+    Route::get('/index','GalleryController@index')->name('index');
+    Route::get('get-slider','GalleryController@fetchGalleryPhoto')->name('fetch');
+    Route::post('/store', 'GalleryController@store')->name('store');
+    Route::put('/status-active', 'GalleryController@statusActive')->name('status.active');
+    Route::put('/status-inactive', 'GalleryController@statusInActive')->name('status.inactive');
+    Route::delete('/delete', 'GalleryController@destroy')->name('destroy');
+    Route::get('/edit', 'GalleryController@edit')->name('edit');
+    Route::post('/update', 'GalleryController@update')->name('update');
 });

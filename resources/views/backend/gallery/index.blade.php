@@ -1,11 +1,11 @@
 @extends('layouts.back_master')
-@section('title','About Slider')
+@section('title','Gallery')
 @section('main_content')
     <div class="row no-gutters">
         <div class="col-12 col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="text-info">About Slider</h4>
+                    <h4 class="text-info">Photo Gallery</h4>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -19,7 +19,7 @@
                                 <th>Actions</th>
                             </tr>
                             </thead>
-                            <tbody id="aboutSliderTable">
+                            <tbody id="galleryTable">
                             </tbody>
                         </table>
                     </div>
@@ -29,10 +29,10 @@
         <div class="col-12 col-md-4">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="text-info">Add New Slider</h4>
+                    <h4 class="text-info">Add New Photo</h4>
                 </div>
                 <div class="card-body">
-                    <form id="sliderAddForm" enctype="multipart/form-data">
+                    <form id="galleryImageAddForm" enctype="multipart/form-data">
                         <label for="">Title</label>
                         <div class="form-group">
                             <input type="text" class="form-control" name="title" placeholder="Slider Title" id="title">
@@ -52,14 +52,13 @@
     <div class="modal fade" id="editModal">
         <div class="modal-dialog">
             <div class="modal-content">
-
                 <div class="modal-header">
-                    <h4 class="modal-title" id="userCrudModal">Edit Slider</h4>
+                    <h4 class="modal-title" id="userCrudModal">Edit Photo</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
 
                 <div class="modal-body">
-                    <form id="aboutSliderUpdateForm" enctype="multipart/form-data" method="post" action="{{route('about-slider.update')}}">
+                    <form id="photoGallery-UpdateForm" enctype="multipart/form-data" method="post" action="{{route('gallery.update')}}">
                         @csrf
                         <input type="hidden" id="id" name="id" value="">
                         <div class="form-group">
@@ -67,9 +66,10 @@
                         </div>
                         <div class="form-group">
                             <input type="file"  name="image"  class="form-control" id="e_image">
+                            <input type="hidden" name="old_image" id="old_image">
                         </div>
                         <div class="form-group">
-                           <span id="sliderEditImage"></span>
+                            <span id="sliderEditImage"></span>
                         </div>
                         <div class="form-group">
                             <button class="form-control btn btn-block btn-info">Update</button>
@@ -84,7 +84,7 @@
 
 @push('script')
 <script>
-    $('#sliderAddForm').validate({
+    $('#galleryImageAddForm').validate({
         rules: {
             title: {
                 required: true
@@ -106,6 +106,7 @@
         }
     });
 </script>
+
 <script>
     function table_data_row(data) {
         var rows = '';
@@ -126,17 +127,17 @@
             rows+= '<td data-id="'+value.id+'" class="text-center">';
             rows+= '<a class="btn btn-sm btn-info text-light" id="editRow" data-id="'+value.id+'" data-toggle="modal" data-target="#editModal">Edit</a> ';
 
-                rows += '<a class="btn btn-sm btn-danger text-light"  id="deleteRow" data-id="' + value.id + '" >Delete</a> ';
+            rows += '<a class="btn btn-sm btn-danger text-light"  id="deleteRow" data-id="' + value.id + '" >Delete</a> ';
             rows+= '</td>';
             rows+= '</tr>';
         });
 
-        $('#aboutSliderTable').html(rows);
+        $('#galleryTable').html(rows);
         $('#dataTable').dataTable();
     }
-    function getAboutSliderData(){
+    function getGalleryPhoto(){
         $.ajax({
-            url : <?= json_encode(route('about-slider.fetch')) ?>,
+            url : <?= json_encode(route('gallery.fetch')) ?>,
             method : 'GET',
             data : {},
             success : function (response) {
@@ -144,8 +145,8 @@
             }
         })
     }
-    getAboutSliderData();
-    $('#sliderAddForm').on('submit',function (e) {
+    getGalleryPhoto();
+    $('#galleryImageAddForm').on('submit',function (e) {
         e.preventDefault();
         var title = $('#title').val();
         var image = $('#image').val();
@@ -156,7 +157,7 @@
             var data = new FormData(this);
 
             $.ajax({
-                url : <?= json_encode(route('about-slider.store'))?>,
+                url : <?= json_encode(route('gallery.store'))?>,
                 method : 'POST',
                 data : data,
                 cache:false,
@@ -173,11 +174,12 @@
                     }
                     else if(response.flag == 'BIG_SIZE'){
                         $('#image').addClass('border-danger');
+                        setSwalAlert('error',"Warning!",response.message);
                         $('#imageError').text(response.message);
                     }
                     else if(response.flag == 'INSERT'){
                         setSwalAlert('success', 'Good job!', response.message);
-                        getAboutSliderData();
+                        getGalleryPhoto();
                         $('#title').val('');
                         $('#image').val('');
                     }
@@ -193,7 +195,7 @@
         var id = $(this).attr('data-id');
         $.ajax(
             {
-                url: <?= json_encode(route('about-slider.status.active'))?>,
+                url: <?= json_encode(route('gallery.status.active'))?>,
                 type: 'PUT',
                 data: {
                     id: id
@@ -201,7 +203,7 @@
                 success: function (response){
                     if(response.flag == 'ACTIVE'){
                         setNotifyAlert('Status Active Successfully!','success');
-                        getAboutSliderData();
+                        getGalleryPhoto();
                     }
                 }
             });
@@ -213,7 +215,7 @@
         var id = $(this).attr('data-id');
         $.ajax(
             {
-                url: <?= json_encode(route('about-slider.status.inactive'))?>,
+                url: <?= json_encode(route('gallery.status.inactive'))?>,
                 type: 'PUT',
                 data: {
                     id: id
@@ -221,7 +223,7 @@
                 success: function (response){
                     if(response.flag == 'INACTIVE'){
                         setNotifyAlert('Status Inactive Successfully!','success');
-                        getAboutSliderData();
+                        getGalleryPhoto();
                     }
                 }
             });
@@ -249,11 +251,11 @@
         }).then((result) => {
             if (result.isConfirmed) {
             $.ajax({
-                url : <?= json_encode(route('about-slider.destroy'))?>,
+                url : <?= json_encode(route('gallery.destroy'))?>,
                 type : 'DELETE',
                 data : {id : id},
                 success : function (response) {
-                    getAboutSliderData();
+                    getGalleryPhoto();
                     swalWithBootstrapButtons.fire(
                         'Deleted!',
                         response.message,
@@ -277,29 +279,35 @@
         }
     })
     })
+
     //Edit
     $('body').on('click','#editRow',function (e) {
         e.preventDefault();
         $("#e_image").val('');
 //        $('#e_title').removeClass('border-danger');
         var id = $(this).attr('data-id');
+
         $.ajax({
-            url : <?= json_encode(route('about-slider.edit'))?>,
+            url : <?= json_encode(route('gallery.edit'))?>,
             type : 'GET',
             data : {id : id},
             success : function (response) {
-               // console.log(response.data);
+                // console.log(response.data);
                 var html = '<img src="../'+response.data.image +'" alt="" width="100px">';
                 $('#id').val(response.data.id);
-               $('#e_title').val(response.data.title);
-               $('#sliderEditImage').html(html);
+                $('#e_title').val(response.data.title);
+                $('#old_image').val(response.data.image);
+                $('#sliderEditImage').html(html);
             }
         })
     })
     //update
-    $('#aboutSliderUpdateForm').on('submit',function (e) {
+    $('#photoGalleryUpdateForm').on('submit',function (e) {
         e.preventDefault();
         var data = new FormData(this);
+        console.log($(this).serialize());
+        console.log(data);
+        return;
         $.ajax({
             url : <?= json_encode(route('about-slider.update'))?>,
             method:'PUT',
@@ -321,8 +329,5 @@
             }
         });
     })
-
 </script>
 @endpush
-
-

@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\AboutSlider;
+use App\Gallery;
 use App\Http\Controllers\Controller;
+use function dd;
 use Illuminate\Http\Request;
-use function response;
 use function view;
 
-class AboutSliderController extends Controller
+class GalleryController extends Controller
 {
     private function isPermittedExtension($ext){
         $permit = ['png','jpg','jpeg'];
@@ -18,16 +18,16 @@ class AboutSliderController extends Controller
         return false;
     }
     public function index(){
-        return view('backend.about.slider',$this->data);
+        return view('backend.gallery.index');
     }
-    public function fetchAboutSlider(){
+    public function fetchGalleryPhoto(){
         return response()->json([
             'status' => 200,
-            'data' =>AboutSlider::latest()->get()
+            'data' =>Gallery::latest()->get()
         ]);
     }
     public function store(Request $request){
-       // dd($request->all());
+        // dd($request->all());
         $image = $request->file('image');
         $ext = $image->extension();
         if(!$this->isPermittedExtension($ext)){
@@ -43,11 +43,11 @@ class AboutSliderController extends Controller
             ]);
         }
         $name =  hexdec(uniqid()) . '.' .$ext;
-        $path = 'uploads/slider/';
+        $path = 'uploads/gallery/';
         $last_image = $path.$name;
         $formData =  $request->all();
         $formData['image'] = $last_image ;
-        if(AboutSlider::create($formData)){
+        if(Gallery::create($formData)){
             $image->move($path,$last_image);
             return response()->json([
                 'flag' =>'INSERT',
@@ -57,7 +57,7 @@ class AboutSliderController extends Controller
     }
 
     public function statusActive(Request $request){
-        AboutSlider::find($request->id)->update([
+        Gallery::find($request->id)->update([
             'status' => 1,
         ]);
         return response()->json([
@@ -66,7 +66,7 @@ class AboutSliderController extends Controller
     }
 
     public function statusInActive(Request $request){
-        AboutSlider::find($request->id)->update([
+        Gallery::find($request->id)->update([
             'status' => 0,
         ]);
         return response()->json([
@@ -75,9 +75,9 @@ class AboutSliderController extends Controller
     }
     public function destroy(Request $request)
     {
-        $ob = AboutSlider::findorFail($request->id);
+        $ob = Gallery::findorFail($request->id);
         $img = $ob->image;
-        $admin = AboutSlider::find($request->id);
+        $admin = Gallery::find($request->id);
         if($admin->delete()){
             if(file_exists($img)){unlink($img);}
             return response()->json([
@@ -88,11 +88,28 @@ class AboutSliderController extends Controller
 
     public function edit(Request $request){
         return response()->json([
-            'data' => AboutSlider::find($request->id)
+            'data' => Gallery::find($request->id)
         ]);
     }
-
     public function update(Request $request){
-        dd($request->file('image'));
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $ext = $image->extension();
+            if(!$this->isPermittedExtension($ext)){
+                return response()->json([
+                    'flag' =>'EXT_NOT_MATCH',
+                    'message' => 'Extension Should be jpg,png,jpeg!'
+                ]);
+            }
+            if(filesize($request->image)>=2000000){
+                return response()->json([
+                    'flag' =>'BIG_SIZE',
+                    'message' => 'Image Size Should be smaller than 2MB!'
+                ]);
+            }
+        }else{
+            dd(3);
+        }
     }
+
 }

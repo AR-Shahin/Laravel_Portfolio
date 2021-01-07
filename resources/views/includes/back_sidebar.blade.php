@@ -75,6 +75,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{route('site-identity.index')}}">Site Identity</a>
                 <a class="collapse-item" href="{{route('social-link.index')}}">Social Link</a>
+                <a class="collapse-item" href="{{route('gallery.index')}}">Gallery</a>
             </div>
         </div>
     </li>
