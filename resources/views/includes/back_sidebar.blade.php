@@ -49,7 +49,7 @@
         <div id="About" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{route('about-text.index')}}">About Text</a>
-                <a class="collapse-item" href="">About Slider</a>
+                <a class="collapse-item" href="{{route('about-slider.index')}}">About Slider</a>
             </div>
         </div>
     </li>

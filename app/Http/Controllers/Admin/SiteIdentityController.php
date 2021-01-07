@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\SiteIdentity;
 use Illuminate\Http\Request;
+use function response;
 use function strtolower;
 use function view;
 
@@ -54,10 +55,6 @@ class SiteIdentityController extends Controller
     }
 
     public function update(Request $request){
-        if($request->input('logo')){
-            return $request->file('logo');
-        }else{
-            return 2;
-        }
+       return response($request->input('x'));
     }
 }

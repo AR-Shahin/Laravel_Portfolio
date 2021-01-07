@@ -9,6 +9,14 @@
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title> @yield('title') | Admin</title>
+    @stack('css')
+    <style>
+        span.error{
+            font-size: 15px;
+            color: red;
+            margin-top:5px;
+        }
+    </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Custom fonts for this template-->
     <link href="{{asset('backend')}}/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -26,7 +34,7 @@
 <!-- Bootstrap core JavaScript-->
 {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>--}}
 <script src="{{asset('backend')}}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <!-- Core plugin JavaScript-->
 <script src="{{asset('backend')}}/vendor/jquery-easing/jquery.easing.min.js"></script>
 <!-- Custom scripts for all pages-->
@@ -35,12 +43,12 @@
 <!-- Page level plugins -->
 <script src="{{asset('backend')}}/vendor/datatables/jquery.dataTables.min.js"></script>
 <script src="{{asset('backend')}}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
 <!-- Page level custom scripts -->
 <script src="{{asset('backend')}}/js/demo/datatables-demo.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="{{asset('asset/ajax.js')}}"></script>
+@stack('script')
 </body>
 
 </html>

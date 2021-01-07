@@ -70,13 +70,13 @@
                     </form>
                 </div>
                 <div class="card-body editSiteForm ">
-                    <form action="{{route('site-identity.update')}}" id="edit+SiteForm" enctype="multipart/form-data" method="post">
+                    <form action="{{route('site-identity.update')}}" id="editSiteForm" enctype="multipart/form-data" method="post">
                         {{method_field('PUT')}}
                         @csrf
                         <table class="table table-bordered">
                             <tr>
                                 <th width="20%">Logo</th>
-                                <td><input type="file" class="form-control " name="logo" id="e_input_logo"></td>
+                                <td><input type="file" class="form-control " name="e_logo" id="e_input_logo"></td>
                             </tr>
                             <input type="hidden" name="id" value="@if($data != null) {{$data->id}}@endif" id="id">
                             <tr>
@@ -216,10 +216,14 @@
         $('#editSiteForm').on('submit',function (e) {
             e.preventDefault();
             var data = new FormData(this);
+
+           // console.log($('#e_input_logo').val());
+           var x = $('#e_input_logo').val();
+
             $.ajax({
                 url : <?= json_encode(route('site-identity.update'))?>,
                 method:'PUT',
-                data : data,
+                data : {x:x},
                 cache:false,
                 processData:false,
                 contentType:false,

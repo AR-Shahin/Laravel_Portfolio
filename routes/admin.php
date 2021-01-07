@@ -14,6 +14,14 @@ Route::name('about-text.')->namespace('Admin')->prefix('about')->group(function(
     Route::put('/update', 'AboutTextController@update')->name('update');
 });
 
+#AboutSlider Routes
+Route::name('about-slider.')->namespace('Admin')->prefix('about-slider')->group(function(){
+    Route::get('/index','AboutSliderController@index')->name('index');
+    Route::get('get-slider','AboutSliderController@fetchAboutSlider')->name('fetch');
+    Route::post('/store', 'AboutSliderController@store')->name('store');
+    Route::put('/update', 'AboutTextController@update')->name('update');
+});
+
 #Category Routes
 Route::name('category.')->namespace('Admin')->prefix('category')->group(function(){
     Route::get('/index','CategoryController@index')->name('index');
