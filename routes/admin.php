@@ -74,3 +74,18 @@ Route::name('gallery.')->namespace('Admin')->prefix('gallery')->group(function()
     Route::get('/edit', 'GalleryController@edit')->name('edit');
     Route::post('/update', 'GalleryController@update')->name('update');
 });
+
+#Project Routes
+Route::name('project.')->namespace('Admin')->prefix('project')->group(function(){
+    Route::get('/index','ProjectController@index')->name('index');
+    Route::get('get-slider','ProjectController@fetchAllProjects')->name('fetch');
+    Route::post('/store', 'ProjectController@store')->name('store');
+    Route::put('/status-active', 'ProjectController@statusActive')->name('status.active');
+    Route::put('/status-inactive', 'ProjectController@statusInActive')->name('status.inactive');
+    Route::delete('/delete', 'ProjectController@destroy')->name('destroy');
+    Route::get('/view', 'ProjectController@view')->name('view');
+    Route::get('/edit', 'ProjectController@edit')->name('edit');
+    Route::post('/update', 'ProjectController@update')->name('update');
+
+
+});

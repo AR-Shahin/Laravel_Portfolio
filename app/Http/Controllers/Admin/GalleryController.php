@@ -135,5 +135,4 @@ class GalleryController extends Controller
             }
         }
     }
-
 }

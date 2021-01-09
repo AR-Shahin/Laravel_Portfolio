@@ -36,6 +36,7 @@
         <div id="sliders" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{route('category.index')}}">Category</a>
+                <a class="collapse-item" href="{{route('project.index')}}">Project</a>
                 <a class="collapse-item" href="{{route('programming.index')}}">Programming</a>
             </div>
         </div>
