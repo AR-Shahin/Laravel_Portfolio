@@ -67,6 +67,7 @@
                         </div>
                         <div class="form-group">
                             <input type="file"  name="image"  class="form-control" id="e_image">
+                            <input type="hidden" name="old_img" id="old_img">
                         </div>
                         <div class="form-group">
                            <span id="sliderEditImage"></span>
@@ -292,6 +293,7 @@
                 var html = '<img src="../'+response.data.image +'" alt="" width="100px">';
                 $('#id').val(response.data.id);
                $('#e_title').val(response.data.title);
+               $('#old_img').val(response.data.image);
                $('#sliderEditImage').html(html);
             }
         })
@@ -302,22 +304,23 @@
         var data = new FormData(this);
         $.ajax({
             url : <?= json_encode(route('about-slider.update'))?>,
-            method:'PUT',
+            method:'POST',
             data: data,
             cache:false,
             processData:false,
             contentType:false,
             success:function (response) {
-                console.log(response);
-                if(response.flag == 'UPDATE') {
-                    setSwalAlert('success', 'Good job!', response.message);
-                    $('#editModal').modal('toggle');
-                    getAllProduct();
-                    $("#e_product").val('');
+                if(response.flag == 'EXT_NOT_MATCH'){
+                    setSwalAlert('error',"Extension Doesn't match!",response.message);
                 }
-            },
-            error : function (e) {
-                console.log(e)
+                else if(response.flag == 'BIG_SIZE'){
+                    $('#imageError').text(response.message);
+                }
+                else if(response.flag == 'UPDATE'){
+                    setSwalAlert('success', 'Good job!', response.message);
+                    getAboutSliderData();
+                    $('#editModal').modal('toggle');
+                }
             }
         });
     })

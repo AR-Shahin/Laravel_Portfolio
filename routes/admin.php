@@ -23,7 +23,7 @@ Route::name('about-slider.')->namespace('Admin')->prefix('about-slider')->group(
     Route::put('/status-inactive', 'AboutSliderController@statusInActive')->name('status.inactive');
     Route::delete('/delete', 'AboutSliderController@destroy')->name('destroy');
     Route::get('/edit', 'AboutSliderController@edit')->name('edit');
-    Route::put('/update', 'AboutSliderController@update')->name('update');
+    Route::post('/update', 'AboutSliderController@update')->name('update');
 });
 
 #Category Routes

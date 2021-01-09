@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\AboutSlider;
 use App\Http\Controllers\Controller;
+use function file_exists;
 use Illuminate\Http\Request;
 use function response;
+use function unlink;
 use function view;
 
 class AboutSliderController extends Controller
@@ -93,6 +95,43 @@ class AboutSliderController extends Controller
     }
 
     public function update(Request $request){
-        dd($request->file('image'));
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $ext = $image->extension();
+            if(!$this->isPermittedExtension($ext)){
+                return response()->json([
+                    'flag' =>'EXT_NOT_MATCH',
+                    'message' => 'Extension Should be jpg,png,jpeg!'
+                ]);
+            }
+            if(filesize($request->image)>=2000000){
+                return response()->json([
+                    'flag' =>'BIG_SIZE',
+                    'message' => 'Image Size Should be smaller than 2MB!'
+                ]);
+            }
+            $name =  hexdec(uniqid()) . '.' .$ext;
+            $path = 'uploads/slider/';
+            $last_image = $path.$name;
+            $formData =  $request->all();
+            $formData['image'] = $last_image ;
+            $update = AboutSlider::findOrfail($request->id)->update($formData);
+            if($update){
+                $image->move($path,$last_image);
+                if(file_exists($request->old_img)){
+                    unlink($request->old_img);
+                }
+                return response()->json([
+                    'flag' =>'UPDATE',
+                    'message' => 'Data updated Successfully!'
+                ]);
+            }
+        }else{
+            $update = AboutSlider::findOrfail($request->id)->update($request->all());
+            return response()->json([
+                'flag' =>'UPDATE',
+                'message' => 'Data updated Successfully!'
+            ]);
+        }
     }
 }
