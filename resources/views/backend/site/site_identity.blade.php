@@ -71,12 +71,12 @@
                 </div>
                 <div class="card-body editSiteForm ">
                     <form action="{{route('site-identity.update')}}" id="editSiteForm" enctype="multipart/form-data" method="post">
-                        {{method_field('PUT')}}
                         @csrf
                         <table class="table table-bordered">
                             <tr>
                                 <th width="20%">Logo</th>
                                 <td><input type="file" class="form-control " name="e_logo" id="e_input_logo"></td>
+
                             </tr>
                             <input type="hidden" name="id" value="@if($data != null) {{$data->id}}@endif" id="id">
                             <tr>
@@ -192,7 +192,7 @@
                 processData:false,
                 contentType:false,
                 success:function (response) {
-                    console.log(response);
+                   // console.log(response);
                     if(response.flag =='EXT_NOT_MATCH'){
                         setSwalAlert('info','Warning!',response.message);
                     }
@@ -217,13 +217,10 @@
             e.preventDefault();
             var data = new FormData(this);
 
-           // console.log($('#e_input_logo').val());
-           var x = $('#e_input_logo').val();
-
             $.ajax({
                 url : <?= json_encode(route('site-identity.update'))?>,
-                method:'PUT',
-                data : {x:x},
+                method:'POST',
+                data : data,
                 cache:false,
                 processData:false,
                 contentType:false,
@@ -232,17 +229,18 @@
                     if(response.flag =='EXT_NOT_MATCH'){
                         setSwalAlert('info','Warning!',response.message);
                     }
-                    else if(response.flag =='INSERT'){
+                    else if(response.flag =='UPDATE'){
                         setSwalAlert('success','Success!',response.message);
                         getSiteIdentity();
                         $('.addSiteForm').hide();
                         $('.editSiteForm').show();
                         $('#siteHeader').text('Edit Site Identity');
-                        $('#e_input_phone').val(phone);
-                        $('#e_input_email').val(email);
-                        $('#e_input_address').val(address);
-                        $('#e_input_resume').val(resume);
-                        $('#id').val(response.data);
+                        $('#e_input_phone').val(response.data.phone);
+                        $('#e_input_email').val(response.data.email);
+                        $('#e_input_address').val(response.data.address);
+                        $('#e_input_resume').val(response.data.resume);
+                        $('#id').val(response.id);
+                        $('#e_input_logo').val('');
                     }
                 }
             });

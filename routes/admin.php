@@ -41,7 +41,7 @@ Route::name('site-identity.')->namespace('Admin')->prefix('site')->group(functio
     Route::get('/index','SiteIdentityController@index')->name('index');
     Route::get('get-site-identity','SiteIdentityController@fetchSiteIdentity')->name('fetch');
     Route::post('/store', 'SiteIdentityController@store')->name('store');
-    Route::put('/update', 'SiteIdentityController@update')->name('update');
+    Route::post('/update', 'SiteIdentityController@update')->name('update');
 });
 
 #Social Link Routes
