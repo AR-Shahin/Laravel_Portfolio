@@ -58,14 +58,14 @@
                 </div>
 
                 <div class="modal-body">
-                    <form id="photoGallery-UpdateForm" enctype="multipart/form-data" method="post" action="{{route('gallery.update')}}">
+                    <form id="photoGalleryUpdateForm"  enctype="multipart/form-data" method="post" action="{{route('gallery.update')}}">
                         @csrf
                         <input type="hidden" id="id" name="id" value="">
                         <div class="form-group">
                             <input type="text" id="e_title" name="title" value="" class="form-control">
                         </div>
                         <div class="form-group">
-                            <input type="file"  name="image"  class="form-control" id="e_image">
+                            <input type="file" name="image" class="form-control" id="e_image">
                             <input type="hidden" name="old_image" id="old_image">
                         </div>
                         <div class="form-group">
@@ -155,9 +155,10 @@
             return false;
         }else{
             var data = new FormData(this);
-
+            //console.log(data);
             $.ajax({
-                url : <?= json_encode(route('gallery.store'))?>,
+                {{--url : <?= json_encode(route('gallery.store'))?>,--}}
+                url : "{{route('gallery.store')}}",
                 method : 'POST',
                 data : data,
                 cache:false,
@@ -168,9 +169,6 @@
                     if(response.flag == 'EXT_NOT_MATCH'){
                         setSwalAlert('error',"Extension Doesn't match!",response.message);
                         $('#image').addClass('border-danger');
-                    }else if(response.flag == 'EMAIL_NOT_MATCH'){
-                        $('#email').addClass('border-danger');
-                        $('#emailError').text(response.message);
                     }
                     else if(response.flag == 'BIG_SIZE'){
                         $('#image').addClass('border-danger');
@@ -304,30 +302,47 @@
     //update
     $('#photoGalleryUpdateForm').on('submit',function (e) {
         e.preventDefault();
-        var data = new FormData(this);
-        console.log($(this).serialize());
-        console.log(data);
-        return;
-        $.ajax({
-            url : <?= json_encode(route('about-slider.update'))?>,
-            method:'PUT',
-            data: data,
-            cache:false,
-            processData:false,
-            contentType:false,
-            success:function (response) {
-                console.log(response);
-                if(response.flag == 'UPDATE') {
-                    setSwalAlert('success', 'Good job!', response.message);
-                    $('#editModal').modal('toggle');
-                    getAllProduct();
-                    $("#e_product").val('');
+        var image = $('#e_image').val();
+        if(image == ''){
+            var title = $('#e_title').val();
+            var id = $('#id').val();
+            $.ajax({
+                url : <?= json_encode(route('gallery.update'))?>,
+                method:'POST',
+                data: {name : title,id : id},
+                success:function (response) {
+                   // console.log(response);
+                    if(response.flag == 'UPDATE') {
+                        setSwalAlert('success', 'Good job!', response.message);
+                        $('#editModal').modal('toggle');
+                        getGalleryPhoto();
+                        //$(this).reset();
+                    }
                 }
-            },
-            error : function (e) {
-                console.log(e)
-            }
-        });
+            });
+        }else{
+            var data = new FormData(this);
+            console.log(image);
+            $.ajax({
+                {{--url : <?= json_encode(route('gallery.update'))?>,--}}
+                url : "{{route('gallery.update')}}",
+                method:'POST',
+                data: data,
+                cache:false,
+                processData:false,
+                contentType:false,
+                success:function (response) {
+                    console.log(response);
+                    if(response.flag == 'UPDATE') {
+                        setSwalAlert('success', 'Good job!', response.message);
+                        $('#editModal').modal('toggle');
+                        getGalleryPhoto();
+                    }else if(response.flag == 'EXT_NOT_MATCH'){
+                        setSwalAlert('error',"Extension Doesn't match!",response.message);
+                    }
+                }
+            });
+        }
     })
 </script>
 @endpush

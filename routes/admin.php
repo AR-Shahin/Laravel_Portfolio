@@ -49,7 +49,7 @@ Route::name('social-link.')->namespace('Admin')->prefix('link')->group(function(
     Route::get('/index','SocialLinksController@index')->name('index');
     Route::get('get-site-identity','SocialLinksController@fetchSocialLinks')->name('fetch');
     Route::post('/store', 'SocialLinksController@store')->name('store');
-    Route::put('/update', 'SocialLinksController@update')->name('update');
+    Route::post('/update', 'SocialLinksController@update')->name('update');
 });
 
 #Programming Routes

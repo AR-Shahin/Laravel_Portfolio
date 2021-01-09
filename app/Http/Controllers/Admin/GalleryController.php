@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Gallery;
 use App\Http\Controllers\Controller;
 use function dd;
+use function explode;
+use function file_exists;
 use Illuminate\Http\Request;
+use function unlink;
 use function view;
 
 class GalleryController extends Controller
@@ -92,7 +95,19 @@ class GalleryController extends Controller
         ]);
     }
     public function update(Request $request){
-        if($request->hasFile('image')){
+       // dd($request->all());
+        if($request->has('name')){
+            $update = Gallery::find($request->id)->update([
+                'title' => $request->name
+            ]);
+            if($update){
+                return response()->json([
+                    'flag' =>'UPDATE',
+                    'message' => 'Data deleted successfully!'
+                ]);
+            }
+        }else{
+           // dd($request->file('image'));
             $image = $request->file('image');
             $ext = $image->extension();
             if(!$this->isPermittedExtension($ext)){
@@ -101,14 +116,23 @@ class GalleryController extends Controller
                     'message' => 'Extension Should be jpg,png,jpeg!'
                 ]);
             }
-            if(filesize($request->image)>=2000000){
+            $name =  hexdec(uniqid()) . '.' .$ext;
+            $path = 'uploads/gallery/';
+            $last_image = $path.$name;
+            $update = Gallery::find($request->id)->update([
+                'title' => $request->title,
+                'image' => $last_image
+            ]);
+            if($update){
+                if(file_exists($request->old_image)){
+                    unlink($request->old_image);
+                }
+                $image->move($path,$last_image);
                 return response()->json([
-                    'flag' =>'BIG_SIZE',
-                    'message' => 'Image Size Should be smaller than 2MB!'
+                    'flag' =>'UPDATE',
+                    'message' => 'Data deleted successfully!'
                 ]);
             }
-        }else{
-            dd(3);
         }
     }
 
