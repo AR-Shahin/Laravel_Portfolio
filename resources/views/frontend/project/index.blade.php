@@ -25,11 +25,11 @@
         .card:hover img{
             transform: scale(0.95);
         }
-.img_box ul {
-    display: flex;
-    margin-top:10px;
-    justify-content: center;
-}
+        .img_box ul {
+            display: flex;
+            margin-top:10px;
+            justify-content: center;
+        }
         .img_box ul li {
             height:40px;
             width:40px;
@@ -69,270 +69,40 @@
         <div class="row text-center my-4" id="projects">
             <div class="col-12">
                 <div class="btn-group" role="group" aria-label="Second group">
-                    <a href="" class="btn btn-info active">All</a>
-                    <a href="" class="btn btn-info">PSD to HTML</a>
-                    <a href="" class="btn btn-info">Wordpress</a>
-                    <a href="" class="btn btn-info">Javascript</a>
-                    <a href="" class="btn btn-info">PHP and Ajax</a>
-                    <a href="" class="btn btn-info">Laravel</a>
+                    <a href="{{route('projects.index')}}" class="btn btn-info @if($flag == '*') active @endif">All</a>
+                    @foreach($categories as $category)
+                        <a href="{{route('category-wise-project',['slug' => $category->slug])}}" class="btn btn-info @if($flag == $category->slug) active @endif ">{{$category->name}}</a>
+                    @endforeach
                 </div>
             </div>
         </div>
     </div>
-    <div class="container-fluid">
+    <div class="container-fluid mt-3">
         <div class="row">
-            <div class="col-12 col-sm-6 col-md-3 mb-3">
-                <div class="project_box">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="img_box text-center">
-                                <a href="http://localhost/Laravel/Laravel_Portfolio/public/frontend/resources/images/portfolio/a2z.png" class="popup"><img src="../public/frontend/resources/images/portfolio/port1.jpg" alt="" class="img-fluid"></a>
-                                <div class="img-content">
-                                    <h6 class="mt-3"><i style="color: #6D214F;font-size: 14px">Wordpress Customizing</i></h6>
-                                    <h5>E-commerce Website</h5>
+            @forelse($projects as $project)
+                <div class="col-12 col-sm-6 col-md-3 mb-3">
+                    <div class="project_box">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="img_box text-center">
+                                    <a href="{{asset($project->thumb_image)}}" class="popup"><img src="{{asset($project->image)}}" alt="{{$project->title}}" class="img-fluid" title="{{$project->title}}"></a>
+                                    <div class="img-content">
+                                        <h6 class="mt-3"><i style="color: #6D214F;font-size: 14px">{{$project->category->name}}</i></h6>
+                                        <h5>{{$project->title}}</h5>
 
-                                    <ul>
-                                        <a href=""><li class="youtube"><i class="fa fa-youtube"></i></li></a>
-                                        <a href=""><li class="git"><i class="fa fa-github"></i></li></a>
-                                        <a href=""><li class="eye"><i class="fa fa-eye"></i></li></a>
-                                    </ul>
+                                        <ul>
+                                            <a href="{{$project->youtube}}"><li class="youtube"><i class="fa fa-youtube"></i></li></a>
+                                            <a href="{{$project->github}}"><li class="git"><i class="fa fa-github"></i></li></a>
+                                            <a href="{{$project->live}}"><li class="eye"><i class="fa fa-eye"></i></li></a>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-3 mb-3">
-                <div class="project_box">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="img_box text-center">
-                                <a href="http://localhost/Laravel/Laravel_Portfolio/public/frontend/resources/images/portfolio/port1.png" class="popup"><img src="../public/frontend/resources/images/portfolio/port2.jpg" alt="" class="img-fluid"></a>
-                                <div class="img-content">
-                                    <h6 class="mt-3"><i style="color: #6D214F;font-size: 14px">Wordpress Customizing</i></h6>
-                                    <h5>E-commerce Website</h5>
-
-                                    <ul>
-                                        <a href=""><li class="youtube"><i class="fa fa-youtube"></i></li></a>
-                                        <a href=""><li class="git"><i class="fa fa-github"></i></li></a>
-                                        <a href=""><li class="eye"><i class="fa fa-eye"></i></li></a>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-3 mb-3">
-                <div class="project_box">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="img_box text-center">
-                                <a href="http://localhost/Laravel/Laravel_Portfolio/public/frontend/resources/images/portfolio/a2z.png" class="popup"><img src="../public/frontend/resources/images/portfolio/port3.jpg" alt="" class="img-fluid"></a>
-                                <div class="img-content">
-                                    <h6 class="mt-3"><i style="color: #6D214F;font-size: 14px">Wordpress Customizing</i></h6>
-                                    <h5>E-commerce Website</h5>
-
-                                    <ul>
-                                        <a href=""><li class="youtube"><i class="fa fa-youtube"></i></li></a>
-                                        <a href=""><li class="git"><i class="fa fa-github"></i></li></a>
-                                        <a href=""><li class="eye"><i class="fa fa-eye"></i></li></a>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-3 mb-3">
-                <div class="project_box">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="img_box text-center">
-                                <a href="http://localhost/Laravel/Laravel_Portfolio/public/frontend/resources/images/portfolio/a2z.png" class="popup"><img src="../public/frontend/resources/images/portfolio/port1.jpg" alt="" class="img-fluid"></a>
-                                <div class="img-content">
-                                    <h6 class="mt-3"><i style="color: #6D214F;font-size: 14px">Wordpress Customizing</i></h6>
-                                    <h5>E-commerce Website</h5>
-
-                                    <ul>
-                                        <a href=""><li class="youtube"><i class="fa fa-youtube"></i></li></a>
-                                        <a href=""><li class="git"><i class="fa fa-github"></i></li></a>
-                                        <a href=""><li class="eye"><i class="fa fa-eye"></i></li></a>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-3 mb-3">
-                <div class="project_box">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="img_box text-center">
-                                <a href="http://localhost/Laravel/Laravel_Portfolio/public/frontend/resources/images/portfolio/a2z.png" class="popup"><img src="../public/frontend/resources/images/portfolio/port5.jpg" alt="" class="img-fluid"></a>
-                                <div class="img-content">
-                                    <h6 class="mt-3"><i style="color: #6D214F;font-size: 14px">Wordpress Customizing</i></h6>
-                                    <h5>E-commerce Website</h5>
-
-                                    <ul>
-                                        <a href=""><li class="youtube"><i class="fa fa-youtube"></i></li></a>
-                                        <a href=""><li class="git"><i class="fa fa-github"></i></li></a>
-                                        <a href=""><li class="eye"><i class="fa fa-eye"></i></li></a>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-3 mb-3">
-                <div class="project_box">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="img_box text-center">
-                                <a href="http://localhost/Laravel/Laravel_Portfolio/public/frontend/resources/images/portfolio/a2z.png" class="popup"><img src="../public/frontend/resources/images/portfolio/port1.jpg" alt="" class="img-fluid"></a>
-                                <div class="img-content">
-                                    <h6 class="mt-3"><i style="color: #6D214F;font-size: 14px">Wordpress Customizing</i></h6>
-                                    <h5>E-commerce Website</h5>
-
-                                    <ul>
-                                        <a href=""><li class="youtube"><i class="fa fa-youtube"></i></li></a>
-                                        <a href=""><li class="git"><i class="fa fa-github"></i></li></a>
-                                        <a href=""><li class="eye"><i class="fa fa-eye"></i></li></a>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-3 mb-3">
-                <div class="project_box">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="img_box text-center">
-                                <a href="http://localhost/Laravel/Laravel_Portfolio/public/frontend/resources/images/portfolio/a2z.png" class="popup"><img src="../public/frontend/resources/images/portfolio/port2.jpg" alt="" class="img-fluid"></a>
-                                <div class="img-content">
-                                    <h6 class="mt-3"><i style="color: #6D214F;font-size: 14px">Wordpress Customizing</i></h6>
-                                    <h5>E-commerce Website</h5>
-
-                                    <ul>
-                                        <a href=""><li class="youtube"><i class="fa fa-youtube"></i></li></a>
-                                        <a href=""><li class="git"><i class="fa fa-github"></i></li></a>
-                                        <a href=""><li class="eye"><i class="fa fa-eye"></i></li></a>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-3 mb-3">
-                <div class="project_box">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="img_box text-center">
-                                <a href="http://localhost/Laravel/Laravel_Portfolio/public/frontend/resources/images/portfolio/a2z.png" class="popup"><img src="../public/frontend/resources/images/portfolio/port1.jpg" alt="" class="img-fluid"></a>
-                                <div class="img-content">
-                                    <h6 class="mt-3"><i style="color: #6D214F;font-size: 14px">Wordpress Customizing</i></h6>
-                                    <h5>E-commerce Website</h5>
-
-                                    <ul>
-                                        <a href=""><li class="youtube"><i class="fa fa-youtube"></i></li></a>
-                                        <a href=""><li class="git"><i class="fa fa-github"></i></li></a>
-                                        <a href=""><li class="eye"><i class="fa fa-eye"></i></li></a>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-3 mb-3">
-                <div class="project_box">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="img_box text-center">
-                                <a href="http://localhost/Laravel/Laravel_Portfolio/public/frontend/resources/images/portfolio/a2z.png" class="popup"><img src="../public/frontend/resources/images/portfolio/port3.jpg" alt="" class="img-fluid"></a>
-                                <div class="img-content">
-                                    <h6 class="mt-3"><i style="color: #6D214F;font-size: 14px">Wordpress Customizing</i></h6>
-                                    <h5>E-commerce Website</h5>
-
-                                    <ul>
-                                        <a href=""><li class="youtube"><i class="fa fa-youtube"></i></li></a>
-                                        <a href=""><li class="git"><i class="fa fa-github"></i></li></a>
-                                        <a href=""><li class="eye"><i class="fa fa-eye"></i></li></a>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-3 mb-3">
-                <div class="project_box">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="img_box text-center">
-                                <a href="http://localhost/Laravel/Laravel_Portfolio/public/frontend/resources/images/portfolio/a2z.png" class="popup"><img src="../public/frontend/resources/images/portfolio/port1.jpg" alt="" class="img-fluid"></a>
-                                <div class="img-content">
-                                    <h6 class="mt-3"><i style="color: #6D214F;font-size: 14px">Wordpress Customizing</i></h6>
-                                    <h5>E-commerce Website</h5>
-
-                                    <ul>
-                                        <a href=""><li class="youtube"><i class="fa fa-youtube"></i></li></a>
-                                        <a href=""><li class="git"><i class="fa fa-github"></i></li></a>
-                                        <a href=""><li class="eye"><i class="fa fa-eye"></i></li></a>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-3 mb-3">
-                <div class="project_box">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="img_box text-center">
-                                <a href="http://localhost/Laravel/Laravel_Portfolio/public/frontend/resources/images/portfolio/a2z.png" class="popup"><img src="../public/frontend/resources/images/portfolio/port5.jpg" alt="" class="img-fluid"></a>
-                                <div class="img-content">
-                                    <h6 class="mt-3"><i style="color: #6D214F;font-size: 14px">Wordpress Customizing</i></h6>
-                                    <h5>E-commerce Website</h5>
-
-                                    <ul>
-                                        <a href=""><li class="youtube"><i class="fa fa-youtube"></i></li></a>
-                                        <a href=""><li class="git"><i class="fa fa-github"></i></li></a>
-                                        <a href=""><li class="eye"><i class="fa fa-eye"></i></li></a>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-3 mb-3">
-                <div class="project_box">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="img_box text-center">
-                                <a href="http://localhost/Laravel/Laravel_Portfolio/public/frontend/resources/images/portfolio/a2z.png" class="popup"><img src="../public/frontend/resources/images/portfolio/port7.jpg" alt="" class="img-fluid"></a>
-                                <div class="img-content">
-                                    <h6 class="mt-3"><i style="color: #6D214F;font-size: 14px">Wordpress Customizing</i></h6>
-                                    <h5>E-commerce Website</h5>
-
-                                    <ul>
-                                        <a href=""><li class="youtube"><i class="fa fa-youtube"></i></li></a>
-                                        <a href=""><li class="git"><i class="fa fa-github"></i></li></a>
-                                        <a href=""><li class="eye"><i class="fa fa-eye"></i></li></a>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @empty
+            @endforelse
         </div>
     </div>
 

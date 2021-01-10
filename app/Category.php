@@ -12,4 +12,7 @@ class Category extends Model
     public function setNameAttribute($value){
         return $this->attributes['name'] = ucwords($value);
     }
+    public function projects(){
+        return $this->hasMany(Project::class);
+    }
 }
