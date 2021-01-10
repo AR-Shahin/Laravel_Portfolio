@@ -153,6 +153,9 @@
                     </button>
                 </div>
                 <form action="" id="editProjectForm" method="post">
+                    <input type="hidden" id="id" name="id">
+                    <input type="hidden" id="old_image" name="old_image">
+                    <input type="hidden" id="old_thumb_image" name="old_thumb_image">
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="category_id">Category : </label>
@@ -493,6 +496,7 @@
             data : {id:id},
             success: function (response) {
                 // console.log(response.data)
+                $('#id').val(response.data.id);
                 $('#e_title').val(response.data.title);
                 $('#e_category_id').val(response.data.category.id);
                 $('#editImage').html('<img src="../'+ response.data.image +'" alt="" width="100px">');
@@ -500,6 +504,8 @@
                 $('#e_youtube').val(response.data.youtube);
                 $('#e_github').val(response.data.github);
                 $('#e_live').val(response.data.live);
+                $('#old_image').val(response.data.image);
+                $('#old_thumb_image').val(response.data.thumb_image);
             }
         })
     })
@@ -524,17 +530,10 @@
                         $('#thumb_image').addClass('border-danger');
                         setSwalAlert('error',"Extension Doesn't match!",response.message);
                     }
-                    else if(response.flag == 'INSERT'){
+                    else if(response.flag == 'UPDATE'){
                         setSwalAlert('success', 'Good job!', response.message);
                         getAllProjects();
-                        $('#addModal').modal('toggle');
-                        $('#title').val('');
-                        $('#image').val('');
-                        $('#category_id').val('');
-                        $('#thumb_image').val('');
-                        $('#youtube').val('');
-                        $('#github').val('');
-                        $('#live').val('');
+                        $('#editModal').modal('toggle');
                     }
                 }
             })

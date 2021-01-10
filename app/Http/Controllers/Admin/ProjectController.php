@@ -6,8 +6,10 @@ use App\Category;
 use App\Http\Controllers\Controller;
 use App\Project;
 use function dd;
+use function file_exists;
 use Illuminate\Http\Request;
 use function response;
+use function unlink;
 use function view;
 
 class ProjectController extends Controller
@@ -115,6 +117,98 @@ class ProjectController extends Controller
         ]);
     }
     public function update(Request $request){
-        return 1;
+        if($request->hasFile('image') && $request->hasFile('thumb_image')){
+            $image = $request->file('image');
+            $thumb_image = $request->file('thumb_image');
+            $ext = $image->extension();
+            $Text = $thumb_image->extension();
+            if(!$this->isPermittedExtension($ext)){
+                return response()->json([
+                    'flag' =>'IMAGE_EXT_NOT_MATCH',
+                    'message' => 'Extension Should be jpg,png,jpeg!'
+                ]);
+            }
+            if(!$this->isPermittedExtension($Text)){
+                return response()->json([
+                    'flag' =>'THUMB_EXT_NOT_MATCH',
+                    'message' => 'Extension Should be jpg,png,jpeg!'
+                ]);
+            }
+
+            $image_name = hexdec(uniqid()) . '.' .$ext;
+            $thumb_name = hexdec(uniqid()) . '.' .$Text;
+            $path = 'uploads/project/';
+            $last_main_image = $path.$image_name;
+            $last_thumb_image = $path.$thumb_name;
+            $formData = $request->except(['old_image','old_thumb_image','id']);
+            $formData['image'] = $last_main_image;
+            $formData['thumb_image'] = $last_thumb_image;
+            $update = Project::findOrfail($request->id)->update($formData);
+            if($update){
+                $image->move($path,$last_main_image);
+                $thumb_image->move($path,$last_thumb_image);
+                if(file_exists($request->old_image)){unlink($request->old_image);}
+                if(file_exists($request->old_thumb_image)){unlink($request->old_thumb_image);}
+                return response()->json([
+                    'flag' =>'UPDATE',
+                    'message' => 'Data Update Successfully!'
+                ]);
+            }
+        }else if($request->hasFile('image')){
+            $image = $request->file('image');
+            $ext = $image->extension();
+            if(!$this->isPermittedExtension($ext)){
+                return response()->json([
+                    'flag' =>'IMAGE_EXT_NOT_MATCH',
+                    'message' => 'Extension Should be jpg,png,jpeg!'
+                ]);
+            }
+            $image_name = hexdec(uniqid()) . '.' .$ext;
+            $path = 'uploads/project/';
+            $last_main_image = $path.$image_name;
+            $formData = $request->except(['old_image','old_thumb_image','id']);
+            $formData['image'] = $last_main_image;
+            $update = Project::findOrfail($request->id)->update($formData);
+            if($update){
+                $image->move($path,$last_main_image);
+                if(file_exists($request->old_image)){unlink($request->old_image);}
+                return response()->json([
+                    'flag' =>'UPDATE',
+                    'message' => 'Data Update Successfully!'
+                ]);
+            }
+        }else if($request->hasFile('thumb_image')){
+            $thumb_image = $request->file('thumb_image');
+            $Text = $thumb_image->extension();
+            if(!$this->isPermittedExtension($Text)){
+                return response()->json([
+                    'flag' =>'THUMB_EXT_NOT_MATCH',
+                    'message' => 'Extension Should be jpg,png,jpeg!'
+                ]);
+            }
+            $thumb_name = hexdec(uniqid()) . '.' .$Text;
+            $path = 'uploads/project/';
+            $last_thumb_image = $path.$thumb_name;
+            $formData = $request->except(['old_image','old_thumb_image','id']);
+            $formData['thumb_image'] = $last_thumb_image;
+            $update = Project::findOrfail($request->id)->update($formData);
+            if($update){
+                $thumb_image->move($path,$last_thumb_image);
+                if(file_exists($request->old_thumb_image)){unlink($request->old_thumb_image);}
+                return response()->json([
+                    'flag' =>'UPDATE',
+                    'message' => 'Data Update Successfully!'
+                ]);
+            }
+        }else{
+            $formData = $request->except(['old_image','old_thumb_image','id']);
+            $update = Project::findOrfail($request->id)->update($formData);
+            if($update){
+                return response()->json([
+                    'flag' =>'UPDATE',
+                    'message' => 'Data Update Successfully!'
+                ]);
+            }
+        }
     }
 }
