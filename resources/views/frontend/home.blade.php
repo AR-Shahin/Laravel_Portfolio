@@ -27,11 +27,11 @@
                                 </div> </div>        <!--   <h6 style="font-size: 18px;m-0;p-0"><i>Web Designer</i></h6> -->
                             <div class="hero-social-media wow animate__animated animate__pulse" >
                                 <ul>
-                                    <li><a href="https://www.facebook.com/sha.hin.9619934" target="_blank"><i class="fab fa-facebook"></i></a></li>
-                                    <li><a href="https://twitter.com/Shahin85080084" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="https://github.com/AR-Shahin" target="_blank"><i class="fab fa-github"></i></a></li>
-                                    <li><a href="https://stackoverflow.com/users/12926862/ar-shahin?tab=profile" target="_blank"><i class="fab fa-stack-overflow"></i></a></li>
-                                    <li><a href="https://www.linkedin.com/in/anisur-rahaman-shahin-31295b186/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                                    <li><a href="@if($link){{$link->facebook}} @endif" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                                    <li><a href="@if($link){{$link->twitter}} @endif" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="@if($link){{$link->github}} @endif" target="_blank"><i class="fab fa-github"></i></a></li>
+                                    <li><a href="@if($link){{$link->youtube}} @endif" target="_blank"><i class="fab fa-stack-overflow"></i></a></li>
+                                    <li><a href="@if($link){{$link->linkedin}} @endif" target="_blank"><i class="fab fa-linkedin"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -53,46 +53,17 @@
                 <div class="col-12 col-sm-6 col-md-6 align-self-center">
                     <div class="myImage_slider">
                         <div class="owl-carousel about_slider">
-                            <div class="single-slider-image">
-                                <div class="img-box">
-                                    <img src="{{asset('frontend')}}/resources/images/my/img.jpg" alt="" class="img-fluid">
+                            @forelse($abt_sliders as $abt_slider)
+                                <div class="single-slider-image">
+                                    <div class="img-box">
+                                        <img src="{{$abt_slider->image}}" alt="" class="img-fluid">
+                                    </div>
+                                    <div class="pos_content">
+                                        <span>{{$abt_slider->title}}</span>
+                                    </div>
                                 </div>
-                                <div class="pos_content">
-                                    <span>Southeast Uniersity</span>
-                                </div>
-                            </div>
-                            <div class="single-slider-image">
-                                <div class="img-box">
-                                    <img src="{{asset('frontend')}}/resources/images/my/img2.JPG" alt="" class="img-fluid">
-                                </div>
-                                <div class="pos_content">
-                                    <span>Southeast Uniersity</span>
-                                </div>
-                            </div>
-                            <div class="single-slider-image">
-                                <div class="img-box">
-                                    <img src="{{asset('frontend')}}/resources/images/my/img4.JPG" alt="" class="img-fluid">
-                                </div>
-                                <div class="pos_content">
-                                    <span>Southeast Uniersity</span>
-                                </div>
-                            </div>
-                            <div class="single-slider-image">
-                                <div class="img-box">
-                                    <img src="{{asset('frontend')}}/resources/images/my/img3.JPG" alt="" class="img-fluid">
-                                </div>
-                                <div class="pos_content">
-                                    <span>Programming Contest</span>
-                                </div>
-                            </div>
-                            <div class="single-slider-image">
-                                <div class="img-box">
-                                    <img src="{{asset('frontend')}}/resources/images/my/img.png" alt="" class="img-fluid">
-                                </div>
-                                <div class="pos_content">
-                                    <span>Chandpur</span>
-                                </div>
-                            </div>
+                            @empty
+                            @endforelse
                         </div>
                     </div>
                 </div>
@@ -122,8 +93,8 @@
                                     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                                         <div class="card">
                                             <div class="card-body mb-0 pb-1">
-                                                <p class="mb-0 pb-2">Hello.I'm Shahin.I'm a tech enthusiast guy. Personally I’m Optimistic and always in hurry kinda person.I'm a freelance web devoloper. I study CSE in South-East university.</p>
-                                                <p class="mb-0 pb-0">I started my career as a Web Designer. After 1 years of consistently working in this field. It helped me gain lots of knowledge about business, marketing, and user experience too. I have tried a few more things to understand customer satisfaction, Business engagement & marketing including E-commerce business, Portfolio, Blogging, Youtube and etc. </p>
+                                                <p class="mb-0 pb-2">@if($abt_text) {{$abt_text->top_text}} @endif</p>
+                                                <p class="mb-0 pb-0">@if($abt_text) {{$abt_text->bottom_text}} @endif</p>
                                             </div>
                                         </div>
                                     </div>
@@ -147,6 +118,7 @@
                                                                     <li><span>BOOTSTRAP4</span></li>
                                                                     <li><span>JAVASCRIPT</span></li>
                                                                     <li><span>JQUERY</span></li>
+                                                                    <li><span>Vue</span></li>
 
                                                                 </ul></div>
                                                             <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">  <ul>
@@ -177,19 +149,21 @@
                                                             <thead>
                                                             <tr>
                                                                 <th>Phone</th>
-                                                                <td><span>+8801754100439</span></td>
+                                                                <td><span>@if($site){{$site->phone}}@endif</span></td>
                                                             </tr>
                                                             <tr>
                                                                 <th>Email</th>
-                                                                <td><span>mdshahinmije96@gmail.com</span></td>
+                                                                <td><span>@if($site)
+                                                                            <a href="mailto:{{$site->email}}">{{$site->email}}</a>
+                                                                        @endif</span></td>
                                                             </tr>
                                                             <tr>
                                                                 <th>Address</th>
-                                                                <td><span>Nikunju-2,Dhaka,Bangladesh</span></td>
+                                                                <td><span>@if($site){{$site->address}}@endif</span></td>
                                                             </tr>
                                                             <tr>
                                                                 <th>Resume</th>
-                                                                <td><a href="" class="btn btn-link">Resume Link</a></td>
+                                                                <td><a href="@if($site){{$site->resume}}@endif" class="btn btn-link">Resume Link</a></td>
                                                             </tr>
                                                             </thead>
                                                         </table>
@@ -317,90 +291,22 @@
 
             <div id="portfolio">
                 <div class="row">
-                    <div class="col-12 col-sm-6 col-md-4 mb-4 wow animate__animated animate__fadeInUp" data-wow-delay=".5s">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="img_box text-center">
-                                    <a href="{{asset('frontend')}}/resources/images/portfolio/a2z.png" class="popup"><img src="../public/frontend/resources/images/portfolio/port1.jpg" alt="" class="img-fluid"></a>
-                                    <div class="img-content">
-                                        <h6 class="mt-3"><i style="color: #6D214F;font-size: 14px">Wordpress Customizing</i></h6>
-                                        <h5>E-commerce Website</h5>
-                                        <a href="" class="btn btn-block btn-outline-info mt-1"><i class="fa fa-eye"></i> Preview</a>
+                    @foreach($projects as $project)
+                        <div class="col-12 col-sm-6 col-md-4 mb-4 wow animate__animated animate__fadeInUp" data-wow-delay=".5s">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="img_box text-center">
+                                        <a href="{{asset($project->thumb_image)}}" class="popup"><img src="{{asset($project->image)}}" alt="" class="img-fluid"></a>
+                                        <div class="img-content">
+                                            <h6 class="mt-3"><i style="color: #6D214F;font-size: 14px">{{$project->category->name}}</i></h6>
+                                            <h5>{{$project->title}}</h5>
+                                            <a href="{{$project->live}}" class="btn btn-block btn-outline-info mt-1"><i class="fa fa-eye"></i> Preview</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-4 mb-4 wow animate__animated animate__fadeInUp" data-wow-delay="1s">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="img_box text-center ">
-                                    <a href="{{asset('frontend')}}/resources/images/portfolio/cosmatic_home.png" class="popup"><img src="{{asset('frontend')}}/resources/images/portfolio/port2.jpg" alt="" class="img-fluid"></a>
-                                    <div class="img-content">
-                                        <h6 class="mt-3"><i style="color: #6D214F;font-size: 14px">Wordpress Customizing</i></h6>
-                                        <h5>E-commerce Website</h5>
-                                        <a href="" class="btn btn-block btn-outline-info mt-1"><i class="fa fa-eye"></i> Preview</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-4 mb-4 wow animate__animated animate__fadeInUp" data-wow-delay="1.25s">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="img_box text-center">
-                                    <a href="{{asset('frontend')}}/resources/images/portfolio/port3.jpg" class="popup"><img src="{{asset('frontend')}}/resources/images/portfolio/port3.jpg" alt="" class="img-fluid"></a>
-                                    <div class="img-content">
-                                        <h6 class="mt-3"><i style="color: #6D214F;font-size: 14px">Wordpress Customizing</i></h6>
-                                        <h5>E-commerce Website</h5>
-                                        <a href="" class="btn btn-block btn-outline-info mt-1"><i class="fa fa-eye"></i> Preview</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-4 mb-4 wow animate__animated animate__fadeInUp" data-wow-delay="1.25s">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="img_box text-center">
-                                    <a href="{{asset('frontend')}}/resources/images/portfolio/hdx_home.png" class="popup"><img src="{{asset('frontend')}}/resources/images/portfolio/port4.jpg" alt="" class="img-fluid"></a>
-                                    <div class="img-content">
-                                        <h6 class="mt-3"><i style="color: #6D214F;font-size: 14px">Wordpress Customizing</i></h6>
-                                        <h5>E-commerce Website</h5>
-                                        <a href="" class="btn btn-block btn-outline-info mt-1"><i class="fa fa-eye"></i> Preview</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-4 mb-4 wow animate__animated animate__fadeInUp" data-wow-delay="1.3s">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="img_box text-center">
-                                    <a href="{{asset('frontend')}}/resources/images/portfolio/organic_home.png" class="popup"><img src="{{asset('frontend')}}/resources/images/portfolio/port5.jpg" alt="" class="img-fluid"></a>
-                                    <div class="img-content">
-                                        <h6 class="mt-3"><i style="color: #6D214F;font-size: 14px">Wordpress Customizing</i></h6>
-                                        <h5>E-commerce Website</h5>
-                                        <a href="" class="btn btn-block btn-outline-info mt-1"><i class="fa fa-eye"></i> Preview</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-4 mb-4 wow animate__animated animate__fadeInUp" data-wow-delay="1.35s">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="img_box text-center">
-                                    <a href="{{asset('frontend')}}/resources/images/portfolio/port7.jpg" class="popup"><img src="{{asset('frontend')}}/resources/images/portfolio/port7.jpg" alt="" class="img-fluid"></a>
-                                    <div class="img-content">
-                                        <h6 class="mt-3"><i style="color: #6D214F;font-size: 14px">PSD to Bootstrap</i></h6>
-                                        <h5>Single Page Website</h5>
-                                        <a href="" class="btn btn-block btn-outline-info mt-1"><i class="fa fa-eye"></i> Preview</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -444,45 +350,21 @@
                                                         <tr >
                                                             <th scope="col">SL</th>
                                                             <th scope="col">Name</th>
-                                                            <th scope="col">Github Link</th>
+                                                            <th scope="col">GitHub Link</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
-                                                        <tr>
-                                                            <th scope="row">1</th>
-                                                            <td>Arraylist</td>
-                                                            <td><a href="https://github.com/AR-Shahin/static_ArrayList" target="_blank">ArrayList</a></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">2</th>
-                                                            <td>Linklist</td>
-                                                            <td><a href="https://github.com/AR-Shahin/Link_list" target="_blank">LinkList</a></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">3</th>
-                                                            <td>Stack</td>
-                                                            <td><a href="https://github.com/AR-Shahin/Stack" target="_blank">Stack</a></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">4</th>
-                                                            <td>Queue</td>
-                                                            <td><a href="https://github.com/AR-Shahin/Queue" target="_blank">Queue</a></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">5</th>
-                                                            <td>Tree</td>
-                                                            <td><a href="https://github.com/AR-Shahin/Tree" target="_blank">Tree</a></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">6</th>
-                                                            <td>Sorting Algorithm</td>
-                                                            <td><a href="https://github.com/AR-Shahin/Tree" target="_blank">Sorting</a></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">7</th>
-                                                            <td>Kaden's Algorithm</td>
-                                                            <td><a href="https://github.com/AR-Shahin/Tree" target="_blank">Kaden's Algorithm</a></td>
-                                                        </tr>
+                                                        @forelse($ds_programming as $key => $item)
+                                                            <tr>
+                                                                <th scope="row">{{$key + 1 }}</th>
+                                                                <td>{{$item->title}}</td>
+                                                                <td><a href="{{$item->link}}" target="_blank">{{$item->title}}</a></td>
+                                                            </tr>
+                                                        @empty
+                                                            <tr>
+                                                                <td colspan="3"><span class="text-danger">Empty</span></td>
+                                                            </tr>
+                                                        @endforelse
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -515,16 +397,17 @@
                                                         </tr>
                                                         </thead>
                                                         <tbody>
-                                                        <tr>
-                                                            <th scope="row">1</th>
-                                                            <td>Scroll_Top</td>
-                                                            <td><a href="https://github.com/AR-Shahin/Scroll_Top" target="_blank">Scroll_Top</a></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">2</th>
-                                                            <td>URI Online Judge</td>
-                                                            <td><a href="https://github.com/AR-Shahin/URI_Online_Judge" target="_blank">URI Online Judge</a></td>
-                                                        </tr>
+                                                        @forelse($other_programming as $key => $item)
+                                                            <tr>
+                                                                <th scope="row">{{$key + 1 }}</th>
+                                                                <td>{{$item->title}}</td>
+                                                                <td><a href="{{$item->link}}" target="_blank">{{$item->title}}</a></td>
+                                                            </tr>
+                                                        @empty
+                                                            <tr>
+                                                                <td colspan="3"><span class="text-danger">Empty</span></td>
+                                                            </tr>
+                                                        @endforelse
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -554,54 +437,14 @@
         <div class="container-fluid-off mt-4" style="overflow: hidden;background: #111">
             <div class="gallery_photo">
                 <div class="row no-gutters">
-                    <div class="col-12 col-md-3">
-                        <div class="img-box">
-                            <a data-fancybox="gallery" href="{{asset('frontend')}}/resources/images/my/img.jpg" data-caption="Southeast University">
-                                <img src="{{asset('frontend')}}/resources/images/my/img.jpg" class="img-fluid"></a>
+                    @foreach($gallery_images as $image)
+                        <div class="col-12 col-md-3">
+                            <div class="img-box">
+                                <a data-fancybox="gallery" href="{{asset($image->image)}}" data-caption="{{$image->title}}">
+                                    <img src="{{asset($image->image)}}" class="img-fluid"></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-12 col-md-3">
-                        <div class="img-box">
-                            <a data-fancybox="gallery" href="{{asset('frontend')}}/resources/images/my/img.png" data-caption="Caption #2">
-                                <img src="../public/frontend/resources/images/my/img.png" class="img-fluid"></a>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-3">
-                        <div class="img-box">
-                            <a data-fancybox="gallery" href="../public/frontend/resources/images/my/img2.JPG" data-caption="Caption #3">
-                                <img src="../public/frontend/resources/images/my/img2.JPG" class="img-fluid"></a>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-3">
-                        <div class="img-box">
-                            <a data-fancybox="gallery" href="../public/frontend/resources/images/my/img3.JPG" data-caption="Caption #1">
-                                <img src="../public/frontend/resources/images/my/img3.JPG" class="img-fluid"></a>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-3">
-                        <div class="img-box">
-                            <a data-fancybox="gallery" href="../public/frontend/resources/images/my/img4.JPG" data-caption="Caption #1">
-                                <img src="../public/frontend/resources/images/my/img4.JPG" class="img-fluid"></a>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-3">
-                        <div class="img-box">
-                            <a data-fancybox="gallery" href="../public/frontend/resources/images/gallery/img1.jpg" data-caption="Caption #1">
-                                <img src="../public/frontend/resources/images/gallery/img.jpg" class="img-fluid"></a>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-3">
-                        <div class="img-box">
-                            <a data-fancybox="gallery" href="../public/frontend/resources/images/gallery/img.jpg" data-caption="Caption #1">
-                                <img src="../public/frontend/resources/images/gallery/img.jpg" class="img-fluid"></a>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-3">
-                        <div class="img-box">
-                            <a data-fancybox="gallery" href="../public/frontend/resources/images/gallery/img1.jpg" data-caption="Caption #1">
-                                <img src="../public/frontend/resources/images/gallery/img.jpg" class="img-fluid"></a>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -659,23 +502,23 @@
                                     <div class="col-12 col-md-5" style="background: #245CD1">
                                         <div class="contact_media mt-4">
                                             <h5>Phone</h5>
-                                            <span>+7852363523</span>
+                                            <span>@if($site){{$site->phone}}@endif</span>
                                         </div>
                                         <div class="contact_media">
                                             <h5>Email</h5>
-                                            <span>mdshahinmije96@gmail.com</span>
+                                            <span>@if($site){{$site->email}}@endif</span>
                                         </div>
                                         <div class="contact_media">
                                             <h5>Address</h5>
-                                            <span>Dhaka,Bangladesh</span>
+                                            <span>@if($site){{$site->address}}@endif</span>
                                         </div>
                                         <div class="socal_links">
                                             <ul>
-                                                <li> <a href=""><i class="fa fa-facebook"></i></a></li>
-                                                <li> <a href=""><i class="fa fa-twitter"></i></a></li>
-                                                <li> <a href=""><i class="fa fa-instagram"></i></a></li>
-                                                <li> <a href=""><i class="fa fa-linkedin"></i></a></li>
-                                                <li> <a href=""><i class="fa fa-github"></i></a></li>
+                                                <li> <a href="@if($link){{$link->facebook}}@endif"><i class="fa fa-facebook"></i></a></li>
+                                                <li> <a href="@if($link){{$link->twitter}}@endif"><i class="fa fa-twitter"></i></a></li>
+                                                <li> <a href="@if($link){{$link->instagram}}@endif"><i class="fa fa-instagram"></i></a></li>
+                                                <li> <a href="@if($link){{$link->linkedin}}@endif"><i class="fa fa-linkedin"></i></a></li>
+                                                <li> <a href="@if($link){{$link->github}}@endif"><i class="fa fa-github"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>

@@ -6,7 +6,7 @@
                 <h4>Links</h4>
                 <div class="links">
                     <ul>
-                        <li><a href=""><i class="fa fa-square"></i> Home</a></li>
+                        <li><a href="{{url('/')}}"><i class="fa fa-square"></i> Home</a></li>
                         <li><a href=""><i class="fa fa-square"></i> About</a></li>
                         <li><a href=""><i class="fa fa-square"></i> Codes</a></li>
                         <li><a href=""><i class="fa fa-square"></i> Portfolio</a></li>
@@ -17,11 +17,11 @@
                 <h4>Follow Me</h4>
                 <div class="links">
                     <ul>
-                        <li><a href=""><i class="fa fa-square"></i> Facebook</a></li>
-                        <li><a href=""><i class="fa fa-square"></i> Twitter</a></li>
-                        <li><a href=""><i class="fa fa-square"></i> Github</a></li>
-                        <li><a href=""><i class="fa fa-square"></i> Linkedin</a></li>
-                        <li><a href=""><i class="fa fa-square"></i> Youtube</a></li>
+                        <li><a href="@if($link){{$link->facebook}}@endif"><i class="fa fa-square"></i> Facebook</a></li>
+                        <li><a href="@if($link){{$link->twitter}}@endif"><i class="fa fa-square"></i> Twitter</a></li>
+                        <li><a href="@if($link){{$link->github}}@endif"><i class="fa fa-square"></i> Github</a></li>
+                        <li><a href="@if($link){{$link->linkedin}}@endif"><i class="fa fa-square"></i> Linkedin</a></li>
+                        <li><a href="@if($link){{$link->youtube}}@endif"><i class="fa fa-square"></i> Youtube</a></li>
                     </ul>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                 <h4>Resources</h4>
                 <div class="links">
                     <ul>
-                        <li><a href=""><i class="fa fa-square"></i> Blogs</a></li>
+                        <li><a href=""><i class="fa fa-square"></i> Blog</a></li>
                         <li><a href=""><i class="fa fa-square"></i> Codes</a></li>
                         <li><a href=""><i class="fa fa-square"></i> Free Tools</a></li>
                     </ul>
@@ -52,7 +52,7 @@
 <footer>
     <div class="row text-center">
         <div class="col-12">
-            <span>Design & Developed with <b>&hearts;</b> by <a href="">Shahin</a></span>
+            <span>Design & Developed with <b>&hearts;</b> by <a href="@if($link){{$link->youtube}}@endif">Shahin</a></span>
         </div>
     </div>
 </footer>
