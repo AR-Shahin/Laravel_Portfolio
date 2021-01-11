@@ -10,7 +10,12 @@ use function response;
 
 class AboutTextController extends Controller
 {
+    public function __construct()
+    {
+        $this->data['main_menu'] = 'About';
+    }
     public function index(){
+        $this->data['sub_menu'] = 'About_text';
         $this->data['count'] = AboutText::select('id')->count();
         $this->data['data'] = AboutText::latest()->first();
         return view('backend.about.abt_txt',$this->data);

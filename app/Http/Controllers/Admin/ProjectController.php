@@ -14,6 +14,11 @@ use function view;
 
 class ProjectController extends Controller
 {
+    function __construct()
+    {
+        $this->data['main_menu'] = 'Project';
+    }
+
     private function isPermittedExtension($ext){
         $permit = ['png','jpg','jpeg'];
         if(in_array($ext,$permit)){
@@ -22,6 +27,7 @@ class ProjectController extends Controller
         return false;
     }
     public function index(){
+        $this->data['sub_menu'] = 'Project';
         $this->data['cats'] = Category::latest()->get();
         return view('backend.project.index',$this->data);
     }

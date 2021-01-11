@@ -10,8 +10,13 @@ use function view;
 
 class ProgrammingController extends Controller
 {
+    public function __construct()
+    {
+        $this->data['main_menu'] = 'Project';
+    }
     public function index(){
-        return view('backend.programming.index');
+        $this->data['sub_menu'] = 'Programming';
+        return view('backend.programming.index',$this->data);
     }
 
     public function getAllProgrammingCode(){

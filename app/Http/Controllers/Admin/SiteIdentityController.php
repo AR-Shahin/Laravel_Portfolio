@@ -14,7 +14,12 @@ use function view;
 
 class SiteIdentityController extends Controller
 {
+    public function __construct()
+    {
+        $this->data['main_menu'] = 'Site';
+    }
     public function index(){
+        $this->data['sub_menu'] = 'Site_identity';
         $this->data['data'] = SiteIdentity::latest()->first();
         return view('backend.site.site_identity',$this->data);
     }

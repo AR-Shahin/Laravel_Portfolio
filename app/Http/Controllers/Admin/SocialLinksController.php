@@ -9,7 +9,12 @@ use function view;
 
 class SocialLinksController extends Controller
 {
+    public function __construct()
+    {
+        $this->data['main_menu'] = 'Site';
+    }
     public function index(){
+        $this->data['sub_menu'] = 'Social_link';
         $this->data['data'] = SocialLink::latest()->first();
         return view('backend.site.links',$this->data);
     }

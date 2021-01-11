@@ -13,8 +13,8 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item">
-        <a class="nav-link" href="{{route('dashboard')}}">
+    <li class="nav-item @if($main_menu == 'Dashboard') active @endif">
+        <a class="nav-link @if($main_menu == 'Dashboard') active @endif" href="{{route('dashboard')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -28,55 +28,44 @@
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
+    <li class="nav-item @if($main_menu == 'Project') active @endif">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#sliders" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
             <span>Project</span>
         </a>
-        <div id="sliders" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="sliders" class="collapse @if($main_menu == 'Project') show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{route('category.index')}}">Category</a>
-                <a class="collapse-item" href="{{route('project.index')}}">Project</a>
-                <a class="collapse-item" href="{{route('programming.index')}}">Programming</a>
+                <a class="collapse-item @if($sub_menu == 'Category') active @endif" href="{{route('category.index')}}">Category</a>
+                <a class="collapse-item @if($sub_menu == 'Project') active @endif" href="{{route('project.index')}}">Project</a>
+                <a class="collapse-item @if($sub_menu == 'Programming') active @endif" href="{{route('programming.index')}}">Programming</a>
             </div>
         </div>
     </li>
 
-    <li class="nav-item">
+    <li class="nav-item  @if($main_menu == 'About') active @endif">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#About" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
             <span>About</span>
         </a>
-        <div id="About" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="About" class="collapse  @if($main_menu == 'About') show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{route('about-text.index')}}">About Text</a>
-                <a class="collapse-item" href="{{route('about-slider.index')}}">About Slider</a>
-            </div>
-        </div>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#post" aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fa fa-table"></i>
-            <span>Post</span>
-        </a>
-        <div id="post" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="">Category</a>
-                <a class="collapse-item" href="">Posts</a>
+                <a class="collapse-item @if($sub_menu == 'About_text') active @endif" href="{{route('about-text.index')}}">About Text</a>
+                <a class="collapse-item @if($sub_menu == 'About_slider') active @endif" href="{{route('about-slider.index')}}">About Slider</a>
             </div>
         </div>
     </li>
 
-    <li class="nav-item">
+
+    <li class="nav-item @if($main_menu == 'Site') active @endif">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Site" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fa fa-globe"></i>
             <span>Site</span>
         </a>
-        <div id="Site" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="Site" class="collapse @if($main_menu == 'Site') show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{route('site-identity.index')}}">Site Identity</a>
-                <a class="collapse-item" href="{{route('social-link.index')}}">Social Link</a>
-                <a class="collapse-item" href="{{route('gallery.index')}}">Gallery</a>
+                <a class="collapse-item @if($sub_menu == 'Site_identity') active @endif" href="{{route('site-identity.index')}}">Site Identity</a>
+                <a class="collapse-item @if($sub_menu == 'Social_link') active @endif" href="{{route('social-link.index')}}">Social Link</a>
+                <a class="collapse-item @if($sub_menu == 'Gallery') active @endif" href="{{route('gallery.index')}}">Gallery</a>
             </div>
         </div>
     </li>

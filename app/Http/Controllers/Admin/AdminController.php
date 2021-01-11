@@ -14,6 +14,8 @@ class AdminController extends Controller
     }
     public function index()
     {
-        return view('backend.dashboard');
+        $this->data['main_menu'] = 'Dashboard';
+        $this->data['sub_menu'] = '';
+        return view('backend.dashboard',$this->data);
     }
 }

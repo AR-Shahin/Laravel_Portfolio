@@ -12,6 +12,10 @@ use function view;
 
 class AboutSliderController extends Controller
 {
+    public function __construct()
+    {
+        $this->data['main_menu'] = 'About';
+    }
     private function isPermittedExtension($ext){
         $permit = ['png','jpg','jpeg'];
         if(in_array($ext,$permit)){
@@ -20,6 +24,7 @@ class AboutSliderController extends Controller
         return false;
     }
     public function index(){
+        $this->data['sub_menu'] = 'About_slider';
         return view('backend.about.slider',$this->data);
     }
     public function fetchAboutSlider(){

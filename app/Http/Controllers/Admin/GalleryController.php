@@ -13,6 +13,10 @@ use function view;
 
 class GalleryController extends Controller
 {
+    public function __construct()
+    {
+        $this->data['main_menu'] = 'Site';
+    }
     private function isPermittedExtension($ext){
         $permit = ['png','jpg','jpeg'];
         if(in_array($ext,$permit)){
@@ -21,7 +25,8 @@ class GalleryController extends Controller
         return false;
     }
     public function index(){
-        return view('backend.gallery.index');
+        $this->data['sub_menu'] = 'Gallery';
+        return view('backend.gallery.index',$this->data);
     }
     public function fetchGalleryPhoto(){
         return response()->json([

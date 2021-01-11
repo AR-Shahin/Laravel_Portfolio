@@ -14,7 +14,12 @@ use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->data['main_menu'] = 'Project';
+    }
     public function index(){
+        $this->data['submenu_menu'] = 'Category';
         return view('backend.category.index',$this->data);
     }
 
