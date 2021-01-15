@@ -26,7 +26,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back Admin!</h1>
                                     </div>
-                                    <form class="user" method="post" action="">
+                                    <form class="user" method="post" action="{{route('admin.login')}}">
                                         @csrf
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user @error('email') is-invalid @enderror" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email" value="{{old('email')}}">

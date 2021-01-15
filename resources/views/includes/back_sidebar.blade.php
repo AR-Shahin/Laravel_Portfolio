@@ -14,7 +14,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item @if($main_menu == 'Dashboard') active @endif">
-        <a class="nav-link @if($main_menu == 'Dashboard') active @endif" href="{{route('dashboard')}}">
+        <a class="nav-link @if($main_menu == 'Dashboard') active @endif" href="{{route('admin.dashboard')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
