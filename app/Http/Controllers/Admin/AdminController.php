@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use function dd;
 use Illuminate\Http\Request;
 use function isPermittedExtension;
+use function response;
 use function view;
 
 class AdminController extends Controller
@@ -56,6 +57,25 @@ class AdminController extends Controller
             return response()->json([
                 'flag' =>'INSERT',
                 'message' => 'Data save Successfully!'
+            ]);
+        }
+    }
+
+    public function fetchAllAdmin(){
+        return response()->json([
+            'status' => 200,
+            'data' => Admin::latest()->get()
+        ]);
+    }
+
+    public function destroy(Request $request){
+        $ob = Admin::findorFail($request->id);
+        $img = $ob->image;
+        $admin = Admin::find($request->id);
+        if($admin->delete()){
+            if(file_exists($img)){unlink($img);}
+            return response()->json([
+                'message' => 'Data deleted successfully!'
             ]);
         }
     }

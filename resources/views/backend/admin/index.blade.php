@@ -35,6 +35,55 @@
 
 @push('script')
 <script>
+    function table_data_row(data) {
+        var rows = '';
+        var i = 0
+        //
+        $.each(data ,function (key,value) {
+            rows+= '<tr>';
+            rows+= '<td>'+ ++i +'</td>';
+            rows+= '<td>'+ value.name +'</td>';
+            rows+= '<td>'+ value.email +'</td>';
+            rows+= '<td>'+ value.phone +'</td>';
+            rows+= '<td> <img src="../'+value.image+'" alt="" width="100px"></td>';
+            rows+= '<td class="text-center">';
+            if(value.role === 1){
+                rows+= ' <button class="badge badge-info" data-id="'+value.id+'" id="makeOperator">Admin</button>';
+            }else{
+                rows+= ' <button class="badge badge-info" data-id="'+value.id+'" id="makeAdmin">Operator</button>';
+            }
+            rows+= '</td>';
+            rows+= '<td class="text-center">';
+            if(value.status === 1){
+                rows+= ' <button class="badge badge-success" data-id="'+value.id+'" id="makeActive">Active</button>';
+            }else{
+                rows+= ' <button class="badge badge-danger" data-id="'+value.id+'" id="makeInactive">Inactive</button>';
+            }
+            rows+= '</td>';
+            rows+= '<td data-id="'+value.id+'" class="text-center">';
+            rows+= '<a class="btn btn-sm btn-info text-light" id="editRow" data-id="'+value.id+'" data-toggle="modal" data-target="#editModal">Edit</a> ';
+
+            rows += '<a class="btn btn-sm btn-danger text-light"  id="deleteRow" data-id="' + value.id + '" >Delete</a> ';
+            rows+= '</td>';
+            rows+= '</tr>';
+        });
+
+        $('#adminTable').html(rows);
+        $('#dataTable').dataTable();
+    }
+    //fetch admin
+    function getAllAdmin() {
+        $.ajax({
+            url : <?= json_encode(route('admin.fetch')) ?>,
+            method : 'GET',
+            data : {},
+            success : function (response) {
+                //console.log(response.data);
+                table_data_row(response.data);
+            }
+        })
+    }
+    getAllAdmin();
     $('#addOperatorForm').validate({
         rules: {
             name: {
@@ -68,7 +117,7 @@
             $(element).removeClass('is-invalid').addClass('is-valid');
         }
     });
-
+//store
     $(document).on('submit','#addOperatorForm',function (e) {
         e.preventDefault();
         var data = new FormData(this);
@@ -96,7 +145,7 @@
                 }
                 else if(response.flag == 'INSERT'){
                     setSwalAlert('success', 'Good job!', response.message);
-                    //getGalleryPhoto();
+                   getAllAdmin();
                     $('#addModal').modal('toggle');
                     $('#name').val('');
                     $('#email').val('');
@@ -104,13 +153,60 @@
                     $('#role').val('');
                     $('#image').val('');
                     $('#phone').val('');
-
                 }
             }
-
+        })
+    });
+    //Delete
+    $('body').on('click','#deleteRow',function (e) {
+        e.preventDefault();
+        var id = $(this).attr('data-id');
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success mx-2',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
         })
 
+        swalWithBootstrapButtons.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+            $.ajax({
+                url : <?= json_encode(route('admin.destroy'))?>,
+                type : 'DELETE',
+                data : {id : id},
+                success : function (response) {
+                    getAllAdmin();
+                    swalWithBootstrapButtons.fire(
+                        'Deleted!',
+                        response.message,
+                        'success'
+                    )
+                },
+                error : function (e) {
+                    console.log(e);
+                }
+            })
 
+        } else if (
+                /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+        ) {
+            swalWithBootstrapButtons.fire(
+                'Cancelled',
+                'Your file is safe :)',
+                'error'
+            )
+        }
+    })
     })
 </script>
 @endpush

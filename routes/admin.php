@@ -15,7 +15,9 @@ Route::name('admin.')->namespace('Admin')->prefix('admin')->group(function (){
     });
 
     Route::get('index','AdminController@adminIndex')->name('index');
+    Route::get('fetch','AdminController@fetchAllAdmin')->name('fetch');
     Route::post('store','AdminController@store')->name('store');
+    Route::delete('destroy','AdminController@destroy')->name('destroy');
 });
 
 #AboutText Routes
