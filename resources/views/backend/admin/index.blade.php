@@ -17,6 +17,7 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Phone</th>
+                                <th>Image</th>
                                 <th>Role</th>
                                 <th>Status</th>
                                 <th>Actions</th>
@@ -32,6 +33,87 @@
     </div>
 @stop
 
+@push('script')
+<script>
+    $('#addOperatorForm').validate({
+        rules: {
+            name: {
+                required: true
+            },
+            email: {
+                required: true
+            },
+            role: {
+                required: true
+            },
+            phone: {
+                required: true
+            },
+            image :{
+                required: true
+            },
+            password :{
+                required: true
+            }
+        },
+        errorElement: 'span',
+        errorPlacement: function (error, element) {
+            error.addClass('invalid-feedback');
+            element.closest('.form-group').append(error);
+        },
+        highlight: function (element, errorClass, validClass) {
+            $(element).addClass('is-invalid');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).removeClass('is-invalid').addClass('is-valid');
+        }
+    });
+
+    $(document).on('submit','#addOperatorForm',function (e) {
+        e.preventDefault();
+        var data = new FormData(this);
+        //console.log(data);
+        $.ajax({
+            url : "{{route('admin.store')}}",
+            method : 'POST',
+            data : data,
+            cache:false,
+            processData:false,
+            contentType:false,
+            success : function (response) {
+                if(response.flag == 'EXT_NOT_MATCH'){
+                    setSwalAlert('error',"Extension Doesn't match!",response.message);
+                    $('#image').addClass('border-danger');
+                }
+                else if(response.flag == 'EMAIL_EXISTS'){
+                    setSwalAlert('error',"Warning!",response.message);
+                    $('#imageError').text(response.message);
+                }
+                else if(response.flag == 'BIG_SIZE'){
+                    $('#image').addClass('border-danger');
+                    setSwalAlert('error',"Warning!",response.message);
+                    $('#imageError').text(response.message);
+                }
+                else if(response.flag == 'INSERT'){
+                    setSwalAlert('success', 'Good job!', response.message);
+                    //getGalleryPhoto();
+                    $('#addModal').modal('toggle');
+                    $('#name').val('');
+                    $('#email').val('');
+                    $('#password').val('');
+                    $('#role').val('');
+                    $('#image').val('');
+                    $('#phone').val('');
+
+                }
+            }
+
+        })
+
+
+    })
+</script>
+@endpush
 
 <!--Add Modal -->
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -63,6 +145,9 @@
                     </div>
                     <div class="form-group">
                         <input type="file" name="image" class="form-control" id="image">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Enter Password">
                     </div>
                     <div class="form-group">
                         <button class="btn btn-success btn-block"><i class="fa fa-plus"></i> Add New Operator</button>

@@ -15,6 +15,7 @@ Route::name('admin.')->namespace('Admin')->prefix('admin')->group(function (){
     });
 
     Route::get('index','AdminController@adminIndex')->name('index');
+    Route::post('store','AdminController@store')->name('store');
 });
 
 #AboutText Routes

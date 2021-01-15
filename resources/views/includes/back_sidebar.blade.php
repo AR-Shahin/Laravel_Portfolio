@@ -72,7 +72,7 @@
 
     <li class="nav-item @if($main_menu == 'Admin') active @endif">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Admin" aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fa fa-globe"></i>
+            <i class="fa fa-user"></i>
             <span>Admin Panel</span>
         </a>
         <div id="Admin" class="collapse @if($main_menu == 'Admin') show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
