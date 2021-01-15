@@ -19,7 +19,7 @@ class CategoryController extends Controller
         $this->data['main_menu'] = 'Project';
     }
     public function index(){
-        $this->data['submenu_menu'] = 'Category';
+        $this->data['sub_menu'] = 'Category';
         return view('backend.category.index',$this->data);
     }
 

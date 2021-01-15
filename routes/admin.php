@@ -6,6 +6,17 @@ Route::get('/ar_admin', 'Auth\LoginController@showLoginForm')->name('login');
 #Dashboard Routes
 Route::get('/dashboard', 'Admin\AdminController@index')->name('dashboard');
 
+
+#Admin Routes
+Route::name('admin.')->namespace('Admin')->prefix('admin')->group(function (){
+    #Auth Routes
+    Route::namespace('Auth')->middleware('guest:web')->group(function (){
+        Route::get('login','LoginController@showLoginForm')->name('login');
+    });
+
+    Route::get('index','AdminController@adminIndex')->name('index');
+});
+
 #AboutText Routes
 Route::name('about-text.')->namespace('Admin')->prefix('about')->group(function(){
     Route::get('/index','AboutTextController@index')->name('index');

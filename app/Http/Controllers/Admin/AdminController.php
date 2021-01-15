@@ -8,14 +8,16 @@ use function view;
 
 class AdminController extends Controller
 {
-    public function __construct()
-    {
-        //$this->middleware('auth');
-    }
     public function index()
     {
         $this->data['main_menu'] = 'Dashboard';
         $this->data['sub_menu'] = '';
         return view('backend.dashboard',$this->data);
+    }
+
+    public function adminIndex(){
+        $this->data['main_menu'] = 'Admin';
+        $this->data['sub_menu'] = 'Manage_Admin';
+        return view('backend.admin.index',$this->data);
     }
 }

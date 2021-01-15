@@ -69,6 +69,20 @@
             </div>
         </div>
     </li>
+
+    <li class="nav-item @if($main_menu == 'Admin') active @endif">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Admin" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fa fa-globe"></i>
+            <span>Admin Panel</span>
+        </a>
+        <div id="Admin" class="collapse @if($main_menu == 'Admin') show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item @if($sub_menu == 'Manage_Admin') active @endif" href="{{route('admin.index')}}">Manage Admin</a>
+                <a class="collapse-item @if($sub_menu == 'Social_link') active @endif" href="{{route('social-link.index')}}">Social Link</a>
+                <a class="collapse-item @if($sub_menu == 'Gallery') active @endif" href="{{route('gallery.index')}}">Gallery</a>
+            </div>
+        </div>
+    </li>
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>

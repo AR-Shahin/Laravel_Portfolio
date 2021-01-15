@@ -11,7 +11,7 @@
                     <table class="table table-bordered">
                         <tr>
                             <th width="20%">Logo</th>
-                            <td><span id="logo"></span></td>
+                            <td class="bg-gradient-info"><span id="logo"></span></td>
                         </tr>
                         <tr>
                             <th>Phone</th>

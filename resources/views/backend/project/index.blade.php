@@ -319,7 +319,7 @@
     //fetch projects
     getAllProjects();
     function getAllProjects() {
-        $.ajax({
+        $.get({
             url : <?= json_encode(route('project.fetch')) ?>,
             method : 'GET',
             data : {},

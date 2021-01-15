@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 #Frontend Routes
 Route::get('/','HomeController@index')->name('home');
 Route::get('/projects', 'ProjectController@index')->name('projects.index');
-Route::get('category/{slug}','ProjectController@categoryWiseProject')->name('category-wise-project');
+Route::get('project/category/{slug}','ProjectController@categoryWiseProject')->name('category-wise-project');
+
 
 
