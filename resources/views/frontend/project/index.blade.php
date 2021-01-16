@@ -91,9 +91,9 @@
                                         <h5>{{$project->title}}</h5>
 
                                         <ul>
-                                            <a href="{{$project->youtube}}"><li class="youtube"><i class="fa fa-youtube"></i></li></a>
-                                            <a href="{{$project->github}}"><li class="git"><i class="fa fa-github"></i></li></a>
-                                            <a href="{{$project->live}}"><li class="eye"><i class="fa fa-eye"></i></li></a>
+                                            <a href="{{$project->youtube}}" target="_blank"><li class="youtube"><i class="fa fa-youtube"></i></li></a>
+                                            <a href="{{$project->github}}" target="_blank"><li class="git"><i class="fa fa-github"></i></li></a>
+                                            <a href="{{$project->live}}" target="_blank"><li class="eye"><i class="fa fa-eye"></i></li></a>
                                         </ul>
                                     </div>
                                 </div>

@@ -18,7 +18,11 @@
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
-
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('home')}}" target="_blank">
+            <i class="fas fa-globe"></i>
+            <span>View Site</span></a>
+    </li>
     <!-- Divider -->
     <hr class="sidebar-divider">
 
@@ -80,6 +84,18 @@
                 <a class="collapse-item @if($sub_menu == 'Manage_Admin') active @endif" href="{{route('admin.index')}}">Manage Admin</a>
                 <a class="collapse-item @if($sub_menu == 'Social_link') active @endif" href="{{route('social-link.index')}}">Social Link</a>
                 <a class="collapse-item @if($sub_menu == 'Gallery') active @endif" href="{{route('gallery.index')}}">Gallery</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item @if($main_menu == 'Contact') active @endif">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Contact" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fa fa-users"></i>
+            <span>Contact</span>
+        </a>
+        <div id="Contact" class="collapse @if($main_menu == 'Contact') show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item @if($sub_menu == 'Contact') active @endif" href="{{route('contact.index')}}">Contact Information</a>
             </div>
         </div>
     </li>

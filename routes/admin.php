@@ -109,4 +109,11 @@ Route::middleware('auth')->group(function (){
         Route::post('/update', 'ProjectController@update')->name('update');
     });
 
+
+    #Contact Routes
+    Route::name('contact.')->namespace('Admin')->prefix('contact')->group(function(){
+        Route::get('/index','ContactController@index')->name('index');
+        Route::get('get-slider','ContactController@fetchContact')->name('fetch');
+    });
+
 });
