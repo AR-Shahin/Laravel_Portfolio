@@ -523,18 +523,18 @@
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-7" style="background: #fff">
-                                        <form action="">
+                                        <form id="contactFormHome" >
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Name">
+                                                <input type="text" class="form-control" placeholder="Enter Your Name" name="name" id="name">
                                             </div>
                                             <div class="form-group">
-                                                <input type="email" class="form-control" placeholder="Email">
+                                                <input type="email" class="form-control" placeholder="Enter Your Email" name="email" id="email">
                                             </div>
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Subject">
+                                                <input type="text" class="form-control" placeholder="Subject" name="subject" id="subject">
                                             </div>
                                             <div class="form-group">
-                                                <textarea name="" id="" cols="30" rows="5" class="form-control"></textarea>
+                                                <textarea name="text" id="text" cols="30" rows="5" class="form-control"></textarea>
                                             </div>
                                             <div class="form-group text-right">
                                                 <input type="submit" class="btn btn-info" value="Submit">
@@ -551,6 +551,57 @@
     </section>
 
 @endsection
+
+
+@push('script')
+<script>
+    $('#contactFormHome').validate({
+        rules: {
+            name: {
+                required: true
+            },
+            email :{
+                required: true
+            },
+            subject :{
+                required: true
+            },
+            text :{
+                required: true
+            }
+        },
+        errorElement: 'span',
+        errorPlacement: function (error, element) {
+            error.addClass('invalid-feedback');
+            element.closest('.form-group').append(error);
+        },
+        highlight: function (element, errorClass, validClass) {
+            $(element).addClass('is-invalid');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).removeClass('is-invalid').addClass('is-valid');
+        }
+    });
+</script>
+<script>
+    $('body').on('submit','#contactFormHome',function (e) {
+        e.preventDefault();
+
+        $.ajax({
+            url : "{{route('contact.store')}}",
+            method : 'POST',
+            data : $(this).serialize(),
+            success: function (response) {
+                setSwalAlert('success','Success!',response.data);
+                $('#name').val('');
+                $('#email').val('');
+                $('#subject').val('');
+                $('#text').val('');
+            }
+        })
+    })
+</script>
+@endpush
 
 
 

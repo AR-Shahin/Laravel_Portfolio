@@ -48,4 +48,20 @@ class ContactController extends Controller
             ]);
         }
     }
+
+    public function countNewMail(){
+        return response()->json([
+            'data' => Contact::where('status',0)->count()
+        ]);
+    }
+
+    public function store(Request $request){
+        $create = Contact::create($request->only(['name','email','subject','text']));
+        if($create){
+            return response()->json([
+                'status' => 200,
+                'data' => 'Thanks! "' .$request->name . '" For contact with us.'
+            ]);
+        }
+    }
 }

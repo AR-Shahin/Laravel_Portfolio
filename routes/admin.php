@@ -113,10 +113,12 @@ Route::middleware('auth')->group(function (){
     #Contact Routes
     Route::name('contact.')->namespace('Admin')->prefix('contact')->group(function(){
         Route::get('/index','ContactController@index')->name('index');
+        Route::post('/store','ContactController@store')->name('store');
         Route::get('get-contact','ContactController@fetchContact')->name('fetch');
         Route::put('seen','ContactController@seenMail')->name('seen');
         Route::get('view','ContactController@view')->name('view');
         Route::delete('destroy','ContactController@destroy')->name('destroy');
+        Route::get('newmail','ContactController@countNewMail')->name('newmail');
     });
 
 });

@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Anisur Rahaman Shahin">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" type="image/x-icon" href="Resources/Images/fav.png">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -29,12 +30,13 @@
     <link rel="stylesheet" href="{{asset('/frontend')}}/resources/css/style.css">
     <!-- Responsive -->
     <link rel="stylesheet" href="{{asset('/frontend')}}/resources/css/responsive.css">
+    @stack('css')
     <title>ShaHin | Portfolio | @yield('title','Home')</title>
 </head>
 <body>
 <div class="wrapping" style="overflow: hidden;">
     <a href="#">
-    <div class="scroll-top"><a href="#navBar"><i class="fas fa-angle-double-up"></i></a></div>
+        <div class="scroll-top"><a href="#navBar"><i class="fas fa-angle-double-up"></i></a></div>
     </a><!-- scrolTop -->
     @include('includes.front_navbar')
 
@@ -59,9 +61,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>
-
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <!-- End Plugin JS -->
 <script src="{{asset('frontend')}}/resources/js/main.js"></script>
+<script src="{{asset('asset/ajax.js')}}"></script>
+@stack('script')
 <script>
     $('.scroll-top').click(function(){
         $('html,body').animate({

@@ -65,3 +65,24 @@
 
 
 @stop
+
+@push('script')
+<script>
+    //count new mail
+    countNewEmail();
+    function countNewEmail() {
+        $.ajax({
+            url : "{{route('contact.newmail')}}",
+            method : 'GET',
+            data : {},
+            success : function (response) {
+                $('#newMail').text(response.data);
+            }
+        });
+    }
+
+//    setInterval(function () {
+//        countNewEmail();
+//    },1000);
+</script>
+@endpush
