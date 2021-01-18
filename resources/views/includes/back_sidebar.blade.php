@@ -82,8 +82,8 @@
         <div id="Admin" class="collapse @if($main_menu == 'Admin') show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item @if($sub_menu == 'Manage_Admin') active @endif" href="{{route('admin.index')}}">Manage Admin</a>
-                <a class="collapse-item @if($sub_menu == 'Social_link') active @endif" href="{{route('social-link.index')}}">Social Link</a>
-                <a class="collapse-item @if($sub_menu == 'Gallery') active @endif" href="{{route('gallery.index')}}">Gallery</a>
+                <a class="collapse-item @if($sub_menu == 'Profile') active @endif" href="{{route('social-link.index')}}">Profile</a>
+                <a class="collapse-item @if($sub_menu == 'TODO') active @endif" href="{{route('todo.index')}}">ToDo List</a>
             </div>
         </div>
     </li>

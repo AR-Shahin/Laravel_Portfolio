@@ -121,4 +121,13 @@ Route::middleware('auth')->group(function (){
         Route::get('newmail','ContactController@countNewMail')->name('newmail');
     });
 
+#Todo List Routes
+    Route::name('todo.')->namespace('Admin')->prefix('todo')->group(function(){
+        Route::get('/index','TodoListController@index')->name('index');
+        Route::post('/store','TodoListController@store')->name('store');
+        Route::get('get-todo','TodoListController@fetchTodo')->name('fetch');
+        Route::get('view','TodoListController@view')->name('view');
+        Route::delete('destroy','TodoListController@destroy')->name('destroy');
+    });
+
 });
