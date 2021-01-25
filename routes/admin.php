@@ -70,7 +70,7 @@ Route::middleware('auth')->group(function (){
         Route::get('/index','SocialLinksController@index')->name('index');
         Route::get('get-site-identity','SocialLinksController@fetchSocialLinks')->name('fetch');
         Route::post('/store', 'SocialLinksController@store')->name('store');
-        Route::post('/update', 'SocialLinksController@update')->name('update');
+        Route::put('/update', 'SocialLinksController@update')->name('update');
     });
 
 #Programming Routes
@@ -113,7 +113,7 @@ Route::middleware('auth')->group(function (){
     #Contact Routes
     Route::name('contact.')->namespace('Admin')->prefix('contact')->group(function(){
         Route::get('/index','ContactController@index')->name('index');
-        Route::post('/store','ContactController@store')->name('store');
+        //Route::post('/store','ContactController@store')->name('store');
         Route::get('get-contact','ContactController@fetchContact')->name('fetch');
         Route::put('seen','ContactController@seenMail')->name('seen');
         Route::get('view','ContactController@view')->name('view');
@@ -129,5 +129,11 @@ Route::middleware('auth')->group(function (){
         Route::get('view','TodoListController@view')->name('view');
         Route::delete('destroy','TodoListController@destroy')->name('destroy');
     });
+
+});
+
+#Contact Route for user
+Route::name('contact.')->namespace('Admin')->prefix('contact')->group(function(){
+    Route::post('/store','ContactController@store')->name('store');
 
 });

@@ -30,7 +30,7 @@
                                     <li><a href="@if($link){{$link->facebook}} @endif" target="_blank"><i class="fab fa-facebook"></i></a></li>
                                     <li><a href="@if($link){{$link->twitter}} @endif" target="_blank"><i class="fab fa-twitter"></i></a></li>
                                     <li><a href="@if($link){{$link->github}} @endif" target="_blank"><i class="fab fa-github"></i></a></li>
-                                    <li><a href="@if($link){{$link->youtube}} @endif" target="_blank"><i class="fab fa-stack-overflow"></i></a></li>
+                                    <li><a href="@if($link){{$link->youtube}} @endif" target="_blank"><i class="fab fa-youtube"></i></a></li>
                                     <li><a href="@if($link){{$link->linkedin}} @endif" target="_blank"><i class="fab fa-linkedin"></i></a></li>
                                 </ul>
                             </div>
@@ -154,7 +154,7 @@
                                                             <tr>
                                                                 <th>Email</th>
                                                                 <td><span>@if($site)
-                                                                            <a href="mailto:{{$site->email}}">{{$site->email}}</a>
+                                                                            <a href="mailto:{{$site->email}}">{{$site->email}}</a> 
                                                                         @endif</span></td>
                                                             </tr>
                                                             <tr>
@@ -599,8 +599,9 @@
                 $('#text').val('');
             }
         })
-    })
+    });
 </script>
+
 @endpush
 
 
