@@ -14,7 +14,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Itim&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('frontend')}}/resources/Fonts/css/all.min.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">  -->
+    <link rel="stylesheet" href="{{asset('frontend')}}/resources/Fonts/css/all.min.css"> 
     <!-- Plugin Css -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
     <link rel="stylesheet" href="{{asset('frontend')}}/resources/css/plugin/animated-headline.css">
