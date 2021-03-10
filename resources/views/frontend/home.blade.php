@@ -27,11 +27,11 @@
                                 </div> </div>        <!--   <h6 style="font-size: 18px;m-0;p-0"><i>Web Designer</i></h6> -->
                             <div class="hero-social-media wow animate__animated animate__pulse" >
                                 <ul>
-                                    <li><a href="@if($link){{$link->facebook}} @endif" target="_blank"><i class="fab fa-facebook"></i></a></li>
-                                    <li><a href="@if($link){{$link->twitter}} @endif" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="@if($link){{$link->github}} @endif" target="_blank"><i class="fab fa-github"></i></a></li>
-                                    <li><a href="@if($link){{$link->youtube}} @endif" target="_blank"><i class="fab fa-youtube"></i></a></li>
-                                    <li><a href="@if($link){{$link->linkedin}} @endif" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                                    <li><a href="@if($link){{$link->facebook}} @endif" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="@if($link){{$link->twitter}} @endif" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="@if($link){{$link->github}} @endif" target="_blank"><i class="fa fa-github"></i></a></li>
+                                    <li><a href="@if($link){{$link->youtube}} @endif" target="_blank"><i class="fa fa-youtube"></i></a></li>
+                                    <li><a href="@if($link){{$link->linkedin}} @endif" target="_blank"><i class="fa fa-linkedin"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -154,7 +154,7 @@
                                                             <tr>
                                                                 <th>Email</th>
                                                                 <td><span>@if($site)
-                                                                            <a href="mailto:{{$site->email}}">{{$site->email}}</a> 
+                                                                            <a href="mailto:{{$site->email}}">{{$site->email}}</a>
                                                                         @endif</span></td>
                                                             </tr>
                                                             <tr>
@@ -455,24 +455,24 @@
         <div class="container">
             <div class="row text-center">
                 <div class="col-12 col-md-3 mb-3">
-                    <i class="far fa-smile-wink"></i>
-                    <h3 class="count">155</h3>
+                    <i class="fa fa-smile-o"></i>
+                    <h3 class="count">10</h3>
                     <span>Happy Client</span>
                 </div>
 
                 <div class="col-12 col-md-3 mb-3">
-                    <i class="fas fa-briefcase"></i>
-                    <h3 class="count">1355</h3>
+                    <i class="fa fa-briefcase"></i>
+                    <h3 class="count">53</h3>
                     <span>Total Projects Done</span>
                 </div>
                 <div class="col-12 col-md-3 mb-3">
-                    <i class="far fa-money-bill-alt"></i>
-                    <h3 class="count">155</h3>
+                    <i class="fa fa-tasks"></i>
+                    <h3 class="count">5</h3>
                     <span>Queue Projects</span>
                 </div>
                 <div class="col-12 col-md-3">
-                    <i class="far fa-object-group"></i>
-                    <h3 class="count">155</h3>
+                    <i class="fa fa-handshake-o"></i>
+                    <h3 class="count">12</h3>
                     <span>Services</span>
                 </div>
             </div>

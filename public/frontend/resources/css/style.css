@@ -203,7 +203,7 @@ h4{
     margin-top: 25px;
 }
 #portfolio_section .card{
-    box-shadow: 0 8px 6px -6px black;  
+    box-shadow: 0 8px 6px -6px black;
     transition: .6s;
 }
 #portfolio_section .card:hover{
@@ -234,7 +234,7 @@ h4{
     background: red;
     position: absolute;
     left: -10%;
-    color: #fff; 
+    color: #fff;
 }
 #contact .bg_content h5{
     font-size: 15px;
@@ -321,7 +321,7 @@ footer span b{
 .scroll-top{
     height: 40px;
     width: 40px;
-    background: rgba(0, 151, 230, 0.7); 
+    background: rgba(0, 151, 230, 0.7);
     position: fixed;
     right: 2%;
     bottom: 2%;
