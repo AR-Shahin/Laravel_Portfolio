@@ -21,7 +21,7 @@ class ContactController extends Controller
         ]);
     }
 
-    public function seenMail(Request $request){
+    public function seenMailL(Request $request){
         $update = Contact::find($request->input('id'))->update([
             'status' => 1
         ]);
@@ -41,7 +41,7 @@ class ContactController extends Controller
     }
 
     public function destroy(Request $request){
-        $cat = Contact::find($request->id);
+        $cat = Contact::whereIn('id',$request->id);
         if($cat->delete()){
             return response()->json([
                 'message' => 'Data deleted successfully!'
@@ -67,5 +67,19 @@ class ContactController extends Controller
 
     public function getLatestMailForNav(){
 
+    }
+
+
+    public function seenMail(Request $request)
+    {
+        $update = Contact::whereIn('id',$request->input('id'))->update([
+            'status' => 1
+        ]);
+        if ($update) {
+            return response()->json([
+                'status' => 200,
+                'flag' => 'SEEN'
+            ]);
+        }
     }
 }

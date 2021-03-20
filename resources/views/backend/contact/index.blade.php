@@ -4,14 +4,28 @@
     <div class="row no-gutters">
         <div class="col-12 col-md-12">
             <div class="card">
-                <div class="card-header">
-                    <h4 class="text-info">Manage Contact Information</h4>
+                <div class="card-header d-flex justify-content-between">
+                    <h4 class="text-info d-inline">Manage Contact Information</h4>
+                    <div class="div" id="bulk_options">
+                        <form class="form-inline" id="bulkForm">
+                            <div class="form-group mb-2">
+                                <select name="bulk_option" id="bulk_option" class="form-control">
+                                    <option value="">Bulk Options</option>
+                                    <option value="seen">Seen</option>
+                                    <option value="delete">Delete</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                            </form>
+                    </div>
+
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                             <tr>
+                                <th width=""><input type="checkbox" id="allIdSelect" class="form-control-sm"></th>
                                 <th width="1%">SL</th>
                                 <th>Name</th>
                                 <th>Email</th>
@@ -38,6 +52,7 @@
         $.each( data, function( key, value ) {
 
             rows = rows + '<tr>';
+            rows += '<td><input type="checkbox" id="checkBoxItem" class="form-control-sm checkBoxItem" name="ids" value="'+value.id+'"></td>'
             rows = rows + '<td>'+ ++i +'</td>';
             rows = rows + '<td>'+value.name+'</td>';
             rows = rows + '<td>'+value.email+'</td>';
@@ -59,6 +74,7 @@
         $('#dataTable').dataTable();
     }
     function getAllContactInformation() {
+        console.log('i am from getallInfo');
         $.ajax({
             url: <?= json_encode(route('contact.fetch'))?>,
             type:'GET',
@@ -75,7 +91,9 @@
 
     $('body').on('click','#deleteRow',function (e) {
         e.preventDefault();
-        var id = $(this).attr('data-id');
+        let id = []
+         id[0] = $(this).attr('data-id');
+
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
                 confirmButton: 'btn btn-success mx-2',
@@ -126,7 +144,9 @@
     //seen
     $('body').on('click', '#makeSeen', function (event) {
         event.preventDefault();
-        var id = $(this).attr('data-id');
+        let id = []
+        id[0] = $(this).attr('data-id');
+
         $.ajax(
             {
                 url: <?= json_encode(route('contact.seen'))?>,
@@ -141,6 +161,7 @@
                     }
                 }
             });
+
     });
 
     //view
@@ -166,7 +187,97 @@
            }
        })
     });
+    //Check box
+    $('body').on('click','#allIdSelect',function(e){
+        $('.checkBoxItem').prop('checked',$(this).prop('checked'));
+    });
+    //bulk form
+    $('body').on('submit','#bulkForm',function(e){
+        e.preventDefault();
+        let ids = [];
+        $('input:checkbox[name=ids]:checked').each(function(){
+            ids.push($(this).val());
+        })
 
+        let bulk_option = $('#bulk_option').val()
+        if(bulk_option === ''){
+            alert('Select Bluck Option!');
+            return;
+        }else if(ids.length == 0){
+            alert('Select Any  Row!');
+            return;
+        }
+        else if(bulk_option === 'seen'){
+            $.ajax(
+            {
+                url: <?= json_encode(route('contact.seen'))?>,
+                type: 'PUT',
+                data: {
+                    id: ids
+                },
+                success: function (response){
+                    if(response.flag == 'SEEN'){
+                        setNotifyAlert('Mail has seen Successfully!','success');
+                        getAllContactInformation();
+                        $('#allIdSelect').prop('checked',false)
+                    }
+                }
+            });
+
+        }else if(bulk_option === 'delete'){
+            const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success mx-2',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+        })
+
+        swalWithBootstrapButtons.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+            $.ajax({
+                url : <?= json_encode(route('contact.destroy'))?>,
+                type : 'DELETE',
+                data : {id : ids},
+                success : function (response) {
+                    getAllContactInformation();
+                    if($('#allIdSelect').prop('checked',$(this).prop('checked'))){
+                        getAllContactInformation();
+                        $('#allIdSelect').prop('checked', false)
+                        }
+                    swalWithBootstrapButtons.fire(
+                        'Deleted!',
+                        'Your data has been deleted.',
+                        'success'
+                    )
+                },
+                error : function (e) {
+                    console.log(e);
+                }
+            })
+
+        } else if (
+                /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+        ) {
+            swalWithBootstrapButtons.fire(
+                'Cancelled',
+                'Your file is safe :)',
+                'error'
+            )
+        }
+    })
+        }
+
+    })
 </script>
 @endpush
 
