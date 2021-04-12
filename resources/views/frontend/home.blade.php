@@ -116,14 +116,18 @@
                                                                     <li><span>HTML5</span></li>
                                                                     <li><span>CSS3</span></li>
                                                                     <li><span>BOOTSTRAP4</span></li>
+                                                                      <li><span>WordPress</span></li>
                                                                     <li><span>JAVASCRIPT</span></li>
                                                                     <li><span>JQUERY</span></li>
                                                                     <li><span>Vue</span></li>
+                                                                    <li><span>Tailwind CSS</span></li>
+                                                                     <li><span>Bulma</span></li>
 
                                                                 </ul></div>
                                                             <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">  <ul>
                                                                     <li><span>PHP</span></li>
                                                                     <li><span>AJAX</span></li>
+                                                                    <li><span>AXIOS</span></li>
                                                                     <li><span>MYSQL</span></li>
                                                                     <li><span>LARAVEL</span></li>
 
@@ -131,6 +135,8 @@
                                                             <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">                                                           <ul>
                                                                     <li><span>GIT</span></li>
                                                                     <li><span>GITHUB</span></li>
+
+                                                                     <li><span>Mark Down</span></li>
                                                                     <li><span>Adobe Photoshop</span></li>
                                                                 </ul></div>
                                                         </div>

@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <h4 class="text-info d-inline">Manage Contact Information</h4>
-                    <div class="div" id="bulk_options">
+                    <div class="d-flex" id="bulk_options">
                         <form class="form-inline" id="bulkForm">
                             <div class="form-group mb-2">
                                 <select name="bulk_option" id="bulk_option" class="form-control">
@@ -25,7 +25,7 @@
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                             <tr>
-                                <th width=""><input type="checkbox" id="allIdSelect" class="form-control-sm"></th>
+                                <th width="" class="d-flex"><input type="checkbox" id="allIdSelect" class="form-control-sm"></th>
                                 <th width="1%">SL</th>
                                 <th>Name</th>
                                 <th>Email</th>
@@ -52,7 +52,7 @@
         $.each( data, function( key, value ) {
 
             rows = rows + '<tr>';
-            rows += '<td><input type="checkbox" id="checkBoxItem" class="form-control-sm checkBoxItem" name="ids" value="'+value.id+'"></td>'
+            rows += '<td width="2%"><input type="checkbox" id="checkBoxItem" class="form-control-sm checkBoxItem" name="ids" value="'+value.id+'"></td>'
             rows = rows + '<td>'+ ++i +'</td>';
             rows = rows + '<td>'+value.name+'</td>';
             rows = rows + '<td>'+value.email+'</td>';
@@ -278,6 +278,8 @@
         }
 
     })
+
+
 </script>
 @endpush
 
