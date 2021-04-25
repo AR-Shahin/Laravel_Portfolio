@@ -1,6 +1,9 @@
 <?php
 
+use Stevebauman\Location\Location;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 
 
 //Auth::routes();
@@ -17,4 +20,9 @@ Route::get('/clear-cache', function() {
     return 'DONE'; //Return anything
 });
 
+Route::get('details', function () {
 
+    $ip = '50.90.0.1';
+    $data = \Location::get($ip);
+    dd($data);
+});
