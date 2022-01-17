@@ -30,13 +30,21 @@
     <link rel="stylesheet" href="{{asset('/frontend')}}/resources/css/style.css">
     <!-- Responsive -->
     <link rel="stylesheet" href="{{asset('/frontend')}}/resources/css/responsive.css">
+    <style>
+     #scroll_top{
+            color: #fff!important;
+            font-size: 22px;
+            font-weight: 500;
+            z-index: 50;
+        }
+    </style>
     @stack('css')
     <title>ShaHin | Portfolio | @yield('title','Home')</title>
 </head>
 <body>
 <div class="wrapping" style="overflow: hidden;">
     <a href="#">
-        <div class="scroll-top"><a href="#navBar"><i class="fas fa-angle-double-up"></i></a></div>
+        <div class="scroll-top" ><a href="#navBar" id="scroll_top"><i class="fa fa-angle-double-up"></i></a></div>
     </a><!-- scrolTop -->
     @include('includes.front_navbar')
 
