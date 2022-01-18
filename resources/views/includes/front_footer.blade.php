@@ -7,9 +7,9 @@
                 <div class="links">
                     <ul>
                         <li><a href="{{url('/')}}"><i class="fa fa-square"></i> Home</a></li>
-                        <li><a href=""><i class="fa fa-square"></i> About</a></li>
-                        <li><a href=""><i class="fa fa-square"></i> Codes</a></li>
-                        <li><a href=""><i class="fa fa-square"></i> Portfolio</a></li>
+                        <li><a href="https://tutspack.com/"><i class="fa fa-square"></i> About</a></li>
+                        <li><a href="https://tutspack.com/"><i class="fa fa-square"></i> Codes</a></li>
+                        <li><a href="https://tutspack.com/"><i class="fa fa-square"></i> Portfolio</a></li>
                     </ul>
                 </div>
             </div>
@@ -29,9 +29,9 @@
                 <h4>Resources</h4>
                 <div class="links">
                     <ul>
-                        <li><a href=""><i class="fa fa-square"></i> Blog</a></li>
-                        <li><a href=""><i class="fa fa-square"></i> Codes</a></li>
-                        <li><a href=""><i class="fa fa-square"></i> Free Tools</a></li>
+                        <li><a href="https://tutspack.com/"><i class="fa fa-square"></i> Blog</a></li>
+                        <li><a href="https://tutspack.com/"><i class="fa fa-square"></i> Codes</a></li>
+                        <li><a href="https://tutspack.com/"><i class="fa fa-square"></i> Free Tools</a></li>
                     </ul>
                 </div>
             </div>
@@ -39,8 +39,8 @@
                 <h4>Hire Me</h4>
                 <div class="links">
                     <ul>
-                        <li><a href=""><i class="fa fa-square"></i> Fiverr Profile</a></li>
-                        <li><a href=""><i class="fa fa-square"></i> Upwork Profile</a></li>
+                        <li><a href="https://tutspack.com/"><i class="fa fa-square"></i> Fiverr Profile</a></li>
+                        <li><a href="https://tutspack.com/"><i class="fa fa-square"></i> Upwork Profile</a></li>
                     </ul>
                 </div>
             </div>
